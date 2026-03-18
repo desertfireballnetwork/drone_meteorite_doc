@@ -1,5 +1,7 @@
 theme: minima
 minima:
-  skin: auto
+  skin: dark
 
 title: Drone Meteorite Searching Instructions
+
+header_pages: []
