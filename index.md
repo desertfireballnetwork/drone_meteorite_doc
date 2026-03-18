@@ -1,4 +1,3 @@
-# Drone Meteorite Searching Crowdsourcing doc
 
 [Drone Meteorite Searching Webapp](https://find.gfo.rocks/)
 
