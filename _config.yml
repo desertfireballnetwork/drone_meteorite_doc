@@ -5,3 +5,7 @@ minima:
 title: Drone Meteorite Searching Instructions
 
 header_pages: []
+
+exclude:
+  - README.md
+  - "**/README.md"
