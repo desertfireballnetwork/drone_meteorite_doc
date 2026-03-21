@@ -1,10 +1,12 @@
-theme: minima
-minima:
-  skin: dark
+title: Drone Meteorite Searching Documentation
+remote_theme: just-the-docs/just-the-docs
 
-title: Drone Meteorite Searching Instructions
+nav_enabled: false
 
-header_pages: []
+plugins:
+  - jekyll-remote-theme
+
+url: https://desertfireballnetwork.github.io/test_just_the_docs
 
 exclude:
   - README.md

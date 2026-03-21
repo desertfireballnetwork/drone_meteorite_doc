@@ -1,4 +1,4 @@
-Welcome to the documentation, tips, and checklists for finding meteorites with a drone.
+Welcome to the documentation, tips, and checklists for finding meteorites with a drone!
 This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/).
 
 
