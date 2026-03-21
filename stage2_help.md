@@ -8,11 +8,12 @@ title: Stage 2 meteorite candidates review
 ## How to use the interface
 
 
-![stage2](screenshots/stage2.png)
+![stage2](assets/screenshots/stage2.png)
 
 
 
-## What is a promising meteorite candidate?
+## What is a promising meteorite candidate in stage 2?
 
-[DFN Drone Meteorite Stage 2 sorting tutorial - Seamus - 2024-10-25](https://youtu.be/xCLqiAVjWxA)
+Watch Seamus' video:
 
+[![DFN Drone Meteorite Stage 2 sorting tutorial - Seamus - 2024-10-25](https://img.youtube.com/vi/xCLqiAVjWxA/maxresdefault.jpg)](https://youtu.be/xCLqiAVjWxA)

@@ -9,7 +9,7 @@ title: Stage 1 meteorite candidates review
 You can select promising meteorite candidates by either clickling on them or using the numpad on your keyboard.
 Selecting one will toggle a blue border around it.
 
-![stage1](screenshots/stage1.png)
+![stage1](assets/screenshots/stage1.png)
 
 The 3x3 grid of tiles is mapped to the keyboard numpad like so:
 
@@ -28,16 +28,18 @@ That's what the `Back` button is for.
 Note: you can only go back to the previous panel, not the ones before that.
 
 
-## What is a promising meteorite candidate?
+## What is a promising meteorite candidate in stage 1?
 
 
+Watch Seamus' video:
 
-[DFN Drone Meteorite Stage 1 sorting tutorial - Seamus - 2024-10-23](https://youtu.be/DPYph0RS6Ko)
+[![DFN Drone Meteorite Stage 1 sorting tutorial - Seamus - 2024-10-23](https://img.youtube.com/vi/DPYph0RS6Ko/maxresdefault.jpg)](https://youtu.be/DPYph0RS6Ko)
+
 
 
 To get an idea of what candidates that should not be dismissed look like, figure 5 from Anderson+ 2022:
 
-![apjlac66d4f5_lr](screenshots/apjlac66d4f5_lr.jpg)
+![apjlac66d4f5_lr](assets/screenshots/apjlac66d4f5_lr.jpg)
 - TOP ROW: Real meteorites we used to train the ML model
 - MIDDLE: DFN09 Kybo-Lintos
 - BOTTOM: False positives we had to verify in person (the middle being the least convincing)
