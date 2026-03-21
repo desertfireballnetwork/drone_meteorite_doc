@@ -10,11 +10,10 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
 
 ## Conducting the drone survey?
  - [Drone checklist](drone_checklist.html)
- - [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platform, need to install dev version yourself._
- - [Training data capture](training_data_capture.html)
  - [Main survey capture](main_survey_capture.html)
+ - [Training data capture](training_data_capture.html)
+ - [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platforms, need to install dev version yourself._
  - [Low-resolution orthomosaic](Low-resolution_orthomosaic.html)
-training_data_capture.md
 
 ## Organising a field campaign?
  - [General checklist](general_field_checklist.html)

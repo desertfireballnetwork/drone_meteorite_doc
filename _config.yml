@@ -6,8 +6,10 @@ nav_enabled: false
 plugins:
   - jekyll-remote-theme
 
-url: https://desertfireballnetwork.github.io/test_just_the_docs
+url: desertfireballnetwork.github.io/drone_meteorite_doc/
 
 exclude:
   - README.md
   - "**/README.md"
+
+logo: "/assets/images/logo.png"
