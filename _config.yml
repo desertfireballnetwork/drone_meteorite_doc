@@ -14,3 +14,6 @@ exclude:
   - "**/README.md"
 
 logo: "assets/images/logo.png"
+
+aux_links:
+  "Home": "/"
