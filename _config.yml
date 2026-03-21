@@ -12,4 +12,4 @@ exclude:
   - README.md
   - "**/README.md"
 
-logo: "/assets/images/logo.png"
+logo: "assets/images/logo.png"
