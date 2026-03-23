@@ -16,7 +16,7 @@ Why not just use the main (high-res) survey image to do this, instead of having 
 ## Data Collection
 
 *   survey area: define a polygon that extends the main survey polygon by at least 100m in all directions.
-*   Ground resolution: 5 cm /pixel
+*   Ground resolution: 5 cm /pixel.
 *   Overlap: 70%
 *   If available, definitely do RTK surveying. RTK + stitching adjustments will make this background map very accurate.
 *   (optional), it is possible to use Ground Control Points ([https://docs.webodm.net/how-to/ground-control-points](https://docs.webodm.net/how-to/ground-control-points)), to get even more accuracy (or if RTK is not possible with your setup).

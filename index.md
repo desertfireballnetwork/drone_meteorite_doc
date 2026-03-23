@@ -6,7 +6,7 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
 
  - [Stage 1 meteorite review](stage1_help.html)
  - [Stage 2 meteorite review](stage2_help.html)
- - [Stage 4 meteorite review](stage4_help.html) **TODO**.
+ - [Stage 4 meteorite review](stage4_help.html) **TODO**
 
 ## Conducting the drone survey?
  - [Drone checklist](drone_checklist.html)
@@ -20,10 +20,12 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
  - [WiFi extender](wifi_extender.html)
  - [RTK base station](RTK_base_station.html)
  - ~~[Mobile Device RTK set-up](mobile_device_RTK.html)~~
+ - [I have found a meteorite, how do I pick it up?](meteorite_curation.html) **TODO**
  
 ## Managing the whole process?
   - [Which users can do what](user_roles.html)
   - [Cloud computing ressources deployment](computing_ressources.html)
+  - [Community management](community_management.html) **TODO**
  
 ## [Frequently Asked Questions](FAQ.html)
 
