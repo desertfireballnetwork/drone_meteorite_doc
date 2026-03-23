@@ -30,4 +30,4 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
 ## [Frequently Asked Questions](FAQ.html)
 
 _Something missing, not clear, or you've come up with an improved version that you want to share?_
--> [Raise an issue](https://github.com/desertfireballnetwork/drone_meteorite_doc/issues).
+-> [Raise an issue](https://github.com/desertfireballnetwork/drone_meteorite_doc/issues), or edit directly by [creating a branch](https://github.com/desertfireballnetwork/drone_meteorite_doc/branches).
