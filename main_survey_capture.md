@@ -50,12 +50,12 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
 
 ## Flight parameters (works on M300)
 
-*   *   First, scroll to the bottom and select 'Advanced Settings'
+*   First, scroll to the bottom and select 'Advanced Settings'
     *   change Side and Frontal Overlap to 10% each, Margin should be 0.
     *   Distance Interval Shot.
     *   Shutter priority.
     *   Shutter speed: 1/2000 s.
-    *   Go back to parent menu, and start from the top.
+*   Go back to parent menu, and start from the top.
     *   Select your camera 'Zenmuse P1' and your camera lens '50 mm'
     *   Smart Oblique 'OFF'
     *   GSD should be ~0.2 cm/pix when you are finished, but it should not be correct when it first appears
@@ -69,7 +69,8 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
     *   Course Angle: adjust to whatever makes sense for your polygon, typically cross the fall line.
     *   Elevation optimization 'OFF'
     *   Upon Completion 'Return to Home'
-    *   Once Complete, double check that the parameters are correct, and press the back arrow at the top left of the screen, make sure to save your changes
+*   Once Complete, double check that the parameters are correct, and press the back arrow at the top left of the screen, make sure to save your changes
+*   Go to camera mode
     *   P1 camera settings - in camera view
         *   Shutter priority, 1/2000
         *   ISO auto
@@ -81,9 +82,15 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
 
 **One person should always be monitoring the drone during flight, this is their only job, this is a critical point of failure even though it is boring. This is also the only part of the process that could be dangerous as the drone could collide with crewed aircraft, people on the ground, or power lines (fire hazard)**
 
+### Beginning of the Survey day:
 *   Drone IMU/Compass calibration - once on a new site, better every day before flying
     *   Camera view, Flight controller settings, Sensor status - IMU/Compass - calibrate both as per instructions
     *   Camera gimball calibration - Camera, Gimball settings - calibrate
+*   Set up RTK basestation __and__ Reset position in the basestation web interface
+
+     _Note: the Drone will complain about RTK __only__ when the RTK position changed by a lot (many kilometres). Otherwise, there will be a systematic offset error, typically worse than if RTK was not used at all_
+
+### During the day:
 *   Every pass across the current flight zone you should look up to visually check the altitude and clearance above any obstacles
     *   A previous error was encountered when the survey height was less than 30 m, the drone’s height would begin to drop over the course of the flight and the barometer sensor would not register the change, only the ventral ultrasonic sensors. TODO: to check, but hopefully RTK surveying will help maintain proper altitude.
 *   The smart controller volume should be loud enough to just make out the image capture sound effect every ~1 to 2 seconds, this will help inform you if the drone is behaving properly
