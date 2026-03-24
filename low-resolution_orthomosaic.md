@@ -11,7 +11,7 @@ Satellite imagery available online is usually not high-enough resolution or up-t
 
 One solution is to create a low-resolution orthomosaic using a low-resolution high-overlap drone flight. 10cm/pixel is a good target ground sampling distance. The issue is that most drones actually give a too-high ground sampling resolution, even when flying at maximum height (120 m in Australia).
 
-Why not just use the main (high-res) survey image to do this, instead of having to capture a dedicated flight? Because stitching lots of images is very computationally costly, and the overlap in the main survey is not large enough. This mini survey will be a tiny fraction of time and bandwidth compared to the main survey, it is worth it!
+Why not just use the main (high-res) survey image to do this, instead of having to capture a dedicated flight? Because stitching lots of images is very computationally costly ([RAM requirements grow linearly with the number of images](https://docs.webodm.org/hardware-requirements/)), and the overlap in the main survey is not large enough. This mini survey will be a tiny fraction of time and bandwidth compared to the main survey, it is worth it!
 
 ## Data Collection
 
@@ -23,7 +23,7 @@ Why not just use the main (high-res) survey image to do this, instead of having 
 
 ## Data Processing
 
-*   Upload and process the data on [WebODM Lighning (cloud version)](https://webodm.net/dashboard).
+*   Upload and process the data on WebODM.
 *   Download the Orthophoto data product (large GeoTiff file).
 *   Degrade the GeoTiff resolution to 0.1 m/pixel using gdal: gdalwarp -tr 0.1 -0.1 source.tiff destination.tiff
 *   Upload and process the tileset on Mapbox: follow instructions in section *Mapbox tileset Command Line Interface*
@@ -49,3 +49,16 @@ Why not just use the main (high-res) survey image to do this, instead of having 
 *   create the tileset: `tilesets create hadry.dn230523 -r recipe.json -n dn230523-05-low`
 *   publish the tileset (this triggers the processing job): tilesets publish hadry.dn230523
 *   if all went well there should be a mapbox tileset available with ID "hadry.dn230523"
+
+
+## WebODM clouds options
+
+### Use [WebODM Lighning (cloud version)](https://webodm.net/dashboard)
+This is by far the easiest option, it costs money money though.
+
+### Run your own instances of WebODM/NodeODM
+[RAM requirements grow linearly with the number of images](https://docs.webodm.org/hardware-requirements/)), so even on a small search area you can end up needing a fairly high-RAM machine to process your data.
+
+Luckily, the [Nectar GPU VM](computing_ressources.html) `g2.xlarge` comes with 128GB of RAM, good enough for stitching ~2,500 low-res images.
+Easiest option is to keep a very low-spec VM running continuously with the WebODM frontend installed,
+and connect the GPU VM as worker when needed. Instructions to follow **TODO**.
