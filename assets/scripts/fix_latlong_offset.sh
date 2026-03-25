@@ -23,24 +23,27 @@ for img in images/*.JPG; do
     fi
 
     # 2. Math: Using awk for high-precision floating point math
-    NEW_LAT_NUM=$(awk "BEGIN {print $OLD_LAT + $LAT_OFFSET}")
-    NEW_LON_NUM=$(awk "BEGIN {print $OLD_LON + $LON_OFFSET}")
+    NEW_LAT=$(awk -v old="$OLD_LAT" -v off="$LAT_OFFSET" 'BEGIN {printf "%+.9f", old + off}')
+    NEW_LON=$(awk -v old="$OLD_LON" -v off="$LON_OFFSET" 'BEGIN {printf "%+.9f", old + off}')
 
-    # 3. Formatting: DJI requires exactly 13 and 14 characters
-    # %+.9f ensures the '+' or '-' sign is always present
-    NEW_LAT=$(printf "%+.9f" "$NEW_LAT_NUM" | cut -c1-13)
-    NEW_LON=$(printf "%+.9f" "$NEW_LON_NUM" | cut -c1-14)
 
     # 4. Writing: Apply the changes
-    $EXIV2_BIN -M"reg drone-dji http://www.dji.com/drone-dji/" \
-      -M"set Xmp.drone-dji.GpsLatitude $NEW_LAT" \
-      -M"set Xmp.drone-dji.GpsLongitude $NEW_LON" \
-      "$img"
+    if grep -q "drone-dji:GpsLatitude=\"$OLD_LAT\"" "$img"; then
+        sed -i "s/drone-dji:GpsLatitude=\"$OLD_LAT\"/drone-dji:GpsLatitude=\"$NEW_LAT\"/g" "$img"
+        sed -i "s/drone-dji:GpsLongitude=\"$OLD_LON\"/drone-dji:GpsLongitude=\"$NEW_LON\"/g" "$img"
+        STATUS="Success (Double Quotes)"
+    else
+        # Fallback for single quotes
+        sed -i "s/drone-dji:GpsLatitude='$OLD_LAT'/drone-dji:GpsLatitude='$NEW_LAT'/g" "$img"
+        sed -i "s/drone-dji:GpsLongitude='$OLD_LON'/drone-dji:GpsLongitude='$NEW_LON'/g" "$img"
+        STATUS="Success (Single Quotes)"
+    fi
 
     # 5. Logging
     echo "FILE: $img | LAT: $OLD_LAT -> $NEW_LAT | LON: $OLD_LON -> $NEW_LON" | tee -a "$LOG_FILE"
 done
 
 echo "Done. Results saved to $LOG_FILE."
+
 
 
