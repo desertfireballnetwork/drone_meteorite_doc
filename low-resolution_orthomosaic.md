@@ -23,10 +23,10 @@ Why not just use the main (high-res) survey image to do this, instead of having 
 
 ## Data Processing
 
-*   Upload and process the data on WebODM.
+*   Upload and process the data on [WebODM](#webodm-clouds-options).
 *   Download the Orthophoto data product (large GeoTiff file).
-*   Degrade the GeoTiff resolution to 0.1 m/pixel using gdal: gdalwarp -tr 0.1 -0.1 source.tiff destination.tiff
-*   Upload and process the tileset on Mapbox: follow instructions in section *Mapbox tileset Command Line Interface*
+*   Degrade the GeoTiff resolution to 0.1 m/pixel using gdal: `gdalwarp -tr 0.1 -0.1 source.tiff destination.tiff`
+*   Upload and process the tileset on Mapbox: follow instructions in section [Mapbox tileset Command Line Interface](#mapbox-tileset-command-line-interface")
 *   set the background tileset ID for the survey in the Webapp admin console.
 
 ## WebODM setup
@@ -54,11 +54,11 @@ Why not just use the main (high-res) survey image to do this, instead of having 
 ## WebODM clouds options
 
 ### Use [WebODM Lighning (cloud version)](https://webodm.net/dashboard)
-This is by far the easiest option, it costs money money though.
+This is by far the easiest option, it costs money though.
 
 ### Run your own instances of WebODM/NodeODM
 [RAM requirements grow linearly with the number of images](https://docs.webodm.org/hardware-requirements/)), so even on a small search area you can end up needing a fairly high-RAM machine to process your data.
 
-Luckily, the [Nectar GPU VM](computing_ressources.html) `g2.xlarge` comes with 128GB of RAM, good enough for stitching ~2,500 low-res images.
+Luckily, the [Nectar GPU VM](computing_ressources.html) `g2.xlarge` used for the machine learning part comes with 128GB of RAM, good enough for stitching ~2,500 low-res images.
 Easiest option is to keep a very low-spec VM running continuously with the WebODM frontend installed,
 and connect the GPU VM as worker when needed. Instructions to follow **TODO**.
