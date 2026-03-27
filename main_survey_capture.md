@@ -1,6 +1,15 @@
 ---
 title: Main Survey Data Collection
 ---
+# Main Survey Data Collection
+{: .no_toc }
+
+## Table of contents
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
 
 
 ## Main Survey requirements
@@ -100,20 +109,20 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
 ## Conducting the survey
 
 ### General tips
-*   One person should always be monitoring the drone during flight, this is their only job, this is a critical point of failure even though it is boring. This is also the only part of the process that could be dangerous as the drone could collide with crewed aircraft, people on the ground, or power lines (fire hazard)
+*   One person should always be monitoring the drone during flight, this is their only job, this is a critical point of failure even though it is boring. This is also the only part of the process that could be dangerous as the drone could collide with crewed aircraft, people on the ground, or power lines (fire hazard).
 *   Every pass across the current flight zone you should look up to visually check the altitude and clearance above any obstacles
-*   A previous error was encountered when the survey height was less than 30 m, the drone’s height would begin to drop over the course of the flight and the barometer sensor would not register the change, only the ventral ultrasonic sensors. RTK surveying helps maintain target altitude.
-*   The smart controller volume should be loud enough to just make out the image capture sound effect every ~1 to 2 seconds, this will help inform you if the drone is behaving properly
-*   The drone pilot should rotate out with another pilot after 2 flights to keep them alert, rotating out between each flight is acceptable
-*   When the drone batteries are below 20% you should wait until it has completed a pass across the fall zone and is on the side closer to you to recall the drone
-*   recall the drone by pressing and holding the ‘home’ button on the controller (the controller should start beeping)
-*   monitoring its return
+    *   A previous error was encountered when the survey height was less than 30 m, the drone's height would begin to drop over the course of the flight and the barometer sensor would not register the change, only the ventral ultrasonic sensors. RTK surveying helps maintain target altitude.
+*   The smart controller volume should be loud enough to just make out the image capture sound effect every ~1 to 2 seconds, this will help inform you if the drone is behaving properly.
+*   When the drone is surveying far from basecamp, it may save time to prematurely interrupt the survey when batteries are getting low (~20%) at the point where the drone closer to you while on its survey line.
+    *   recall the drone by pressing and holding the ‘home’ button on the controller (the controller should start beeping)
+*   Charge, charge and keep charging. Generally drone batteries get used faster than you can recharge them. Unless you have a lot of spare batteries (>14 for the M300), you will need to optimise the recharging process to maintain high-availability flying throughout the day.
+*   Capturing quality images and metadata is key to the whole process. And there are many things that can degrade image quality. We recommand you copy/paste the checklists below in an app like [Google Keep](https://keep.google.com/) and actually tick them off.
 
 
 
 ### Day start checklist
 - [ ] Set up RTK basestation (needs time to get a lock)
-- [ ] Reset position in the basestation RTK web interface (**needs to be done every time the RTK basestation moves**)
+- [ ] Reset position in the basestation RTK web interface (**needs to be done every time the RTK basestation moves †**)
 - [ ] Deploy landing pad
 - [ ] Set up drone + camera (M300: use 50mm lens)
 - [ ] Clean lens
@@ -123,8 +132,9 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
     *   Camera view, Flight controller settings, Sensor status - IMU/Compass - calibrate both as per instructions
     *   Camera gimball calibration - Camera, Gimball settings - calibrate
 - [ ] Go through [flight parameters](#flight-parameters) checklist
+- [ ] Configure connection to RTK base station or NTRIP.
 - [ ] Select flight plan
-- [ ] Assess whether lighting conditions are ok (sun angles if sunny, enough light for good picture quality if cloudy)
+- [ ] Assess whether lighting conditions are okay (sun angles if sunny, enough light for good picture quality if cloudy)
 
 
 ### Pre-flight checklist
@@ -135,11 +145,12 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
 ### End-flight checklist
 - [ ] Hot-swap batteries (one at the time)
 - [ ] Change SD card
-(after the next flight has taken off)
-- [ ] Cycle batteries: drone -> fridge -> charging station
+
+After the next flight has taken off:
+- [ ] Cycle batteries: drone -> cool down (shade or fridge) -> charging station
 - [ ] Download data: SD card -> computer
 - [ ] check image focus using 100% zoom level on a computer.
-- [ ] make decision on whether there should be a next flight: sun angles -> too long shadows. low light -> too high-ISO?
+- [ ] make decision on whether there should be a next flight: sun angles -> too long shadows? low light -> too high-ISO?
 
 
-_Note: the Drone will complain about RTK __only__ when the RTK position changed by a lot (many kilometres). Otherwise, there will be a systematic offset error, typically worse than if RTK was not used at all_
+_Note †: the Drone will complain about RTK __only__ when the RTK position changed by a lot (many kilometres). Otherwise, there will be a systematic offset error, typically worse than if RTK was not used at all_

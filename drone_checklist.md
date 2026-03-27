@@ -11,7 +11,7 @@ title: Drone checklist
 - [ ] SD cards.
 - [ ] Something to make a landing pad (e.g. tarp).
 - [ ] stuff for making ground control points (optional, for the low-res survey)
-- [ ] RTK base station + batteries (typically Trimble R10 or R12)
+- [ ] RTK base station + batteries (e.g. Trimble R10 or R12) OR nearby accessible NTRIP broadcaster. [Aus: GA NTRIP](https://gnss.ga.gov.au/stream)
 
 ## Computer things
 - [ ] Laptop with ~1TB free space.

@@ -2,8 +2,10 @@
 title: Training Data Collection
 ---
 
-
 Capturing quality training data is key to the whole process. Remember: Garbage in, garbage out. Hence take extra care in doing this step well.
+
+## [Drone flight checklists](main_survey_capture.html#day-start-checklist)
+
 
 ## True images (meteorites)
 
@@ -15,6 +17,9 @@ Capturing quality training data is key to the whole process. Remember: Garbage i
 - [ ] a drone.
 - [ ] a cardboard box and some gloves can be useful to avoid making a mess with the painted rocks.
 - [ ] 2x UHF radios.
+
+
+
 
 ### Capturing true training data
 
@@ -39,6 +44,8 @@ Capturing quality training data is key to the whole process. Remember: Garbage i
 
   
 _Do we need to capture true training data at every site?_ We have built up a large dataset of meteorite and meteorite-looking rocks for training, hence the return on adding more training data tends to diminish. However, this step is a relatively low effort thing to do at each new site visited (assuming you are just doing 10-20 meteorites). Over time it does truly really help increase the variance in the training set, ultimately making model predictions more accurate. **So do it if you have time, but it's not critical.**
+
+
 
 ## False Images (background)
 
