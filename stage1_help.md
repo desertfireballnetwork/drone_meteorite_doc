@@ -16,19 +16,15 @@ The 3x3 grid of tiles is mapped to the keyboard numpad like so:
 
 | 7 | 8 | 9 |
 | :---: | :---: | :---: |
-| 4 | 5{.btn .btn-secondary .border .border-primary} | 6 |
+| 4 | 5 | 6 |
 | 1 | 2 | 3 |
 
-Once you have selected all of the promising meteorite candidates, hit
-Save{: .btn .btn-blue }
-or enter on the keyboard.
+Once you have selected all of the promising meteorite candidates, hit `Save` or enter on the keyboard.
 
 ### Back button
 Have you hit Save accidently too early, want to go back?
 
-That's what the
-Back{: .btn .btn-grey }
-button is for.
+That's what the `Back` button is for.
 
 Note: you can only go back to the previous panel, not the ones before that.
 
