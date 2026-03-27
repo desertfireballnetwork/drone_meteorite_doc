@@ -1,6 +1,7 @@
 ---
 title: Drone checklist
 ---
+# {{ page.title }}
 
 ## Drone
 - [ ] Drone.

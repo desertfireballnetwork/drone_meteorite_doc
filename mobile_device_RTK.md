@@ -1,6 +1,7 @@
 ---
 title: Mobile Device RTK set-up
 ---
+# {{ page.title }}
 
 **Note: we are no longer using RTK for stage 4 follow-up**
 

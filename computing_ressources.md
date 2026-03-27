@@ -1,6 +1,7 @@
 ---
 title: Computing ressources deployment
 ---
+# {{ page.title }}
 
 ## Webapp Deployment
 

@@ -1,22 +1,21 @@
 ---
 title: Main Survey Data Collection
 ---
-# Main Survey Data Collection
+# {{ page.title }}
 {: .no_toc }
-
 ## Table of contents
 {: .no_toc .text-delta }
-
 1. TOC
 {:toc}
 
 
 
 ## Main Survey requirements
-_This section is in case using other drone than M300 + Zenmuse P1 & 50mm lens_
+_Read this if using a drone other than M300 + Zenmuse P1 & 50mm lens._
 
 ### Pictures quality
 
+*   Image format: JPEG.
 *   Final **ground resolution** should be between 1.8 mm/pix and 2.2 mm/ pix resolution, know your drone, know your resolution. This may be relaxed if looking for larger meteorites (>300g).
 *   Focus: images should be in focus at all points in the image (even in corners) at the flight altitude.
 *   Motion blur. Maximum flight survey speed shgould be determined so that motion blur does not exceed 1 pixel during one exposure. Note: motion blur may not be visible in the images, so this really needs to be calculated.
@@ -26,7 +25,7 @@ _This section is in case using other drone than M300 + Zenmuse P1 & 50mm lens_
 *   If overcast: shadows are not an issue, but picture quality may start to degrade due to not enough light (too high ISO). This is camera dependant.
 
 
-### Metadata
+### Image Metadata
 
 Special attention should be given to make sure appropriate **metadata is tagged in the images**, otherwise it will be a mess and the survey may have to be redone from scratch.
 
@@ -34,6 +33,16 @@ Special attention should be given to make sure appropriate **metadata is tagged 
 *   Flying the survey drone with **Real-Time Kinematics** (either using your own RTK base station, or connecting to a nearby one online) is very desirable. It will record better metadata for georeferencing (altitude notably). And, depending on the configuration of your drone, it will help it fly at a constant altitude.
 *   Timezone set to UTC
 
+
+### Drone/Camera compatibility with the webapp
+
+The webapp as been used so far with DJI M300 (+Zenmuse P1 camera), Mavic 3 Pro, Phantom 4.
+
+In principle it should work with other drones and/or cameras.
+However different drone manufacturers sometimes use different Exif keys for the same thing.
+And to georeference the pictures we also need to know the physical size of the sensor used, that's not always embedded in the Exif, so we keep a data file for each camera internally.
+
+If using a different type of drone, get in touch early so we can do some tests and update the webapp if needed.
 
 
 

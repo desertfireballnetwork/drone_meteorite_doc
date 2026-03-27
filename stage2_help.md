@@ -1,7 +1,7 @@
 ---
 title: Stage 2 meteorite candidates review
 ---
-
+# {{ page.title }}
 
 ## Introduction
 

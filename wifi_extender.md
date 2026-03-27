@@ -1,6 +1,7 @@
 ---
-title: Starlink and WiFi extender set-up
+title: WiFi extender set-up
 ---
+# {{ page.title }}
 
 *   The Startlink and TP-link routers shall be pre-configured as on following diagram.
 *   The TP-link router shares the IP range with the Starlink (in some sort of bridge mode).

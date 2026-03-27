@@ -1,6 +1,7 @@
 ---
 title: Training Data Collection
 ---
+# {{ page.title }}
 
 Capturing quality training data is key to the whole process. Remember: Garbage in, garbage out. Hence take extra care in doing this step well.
 
@@ -25,18 +26,18 @@ Capturing quality training data is key to the whole process. Remember: Garbage i
 
 *   Final resolution should be between 1.8 mm/pix and 2.2 mm/ pix resolution, know your drone, know your resolution. If using the M300 with the Zenmuse P1 (48 MP) camera and 50 mm lens, your altitude should be between 18 and 30 m.
 
-**If you have real meteorites with fresh fusion crusts:**
+#### If you have real meteorites with fresh fusion crusts
 
 *   place a meteorite and point to it at least 3 m away, then pick up the meteorite to re-place it, to then take the next picture (only repeat up to 5 times, rotating and changing orientation each time).
 *   If possible place a small piece of Aluminum Foil that is smaller than the meteorite between the rock and the ground, your curator will thank you.
 *   DO NOT LEAVE REAL METEORITES IN A LINE LIKE FAKE ONES. WE ARE HERE TO ADD TO THE METEORITE COLLECTION NOT SUBTRACT FROM IT.
 
-**If you have fake meteorites (i.e. spray-painted rocks):**
+#### If you have fake meteorites (i.e. spray-painted rocks)
 
 *   place them in a line near different background objects (limestone rocks, saltbush, grass tuft, hole, lichen colony, etc) at least 8 m apart from the others, then walk next to the line and point to each rock.
 *   The pointer should walk slowly, pointing to the rock nearest to them (standing at least 3m from the rock), the drone flyer should take only one image per rock, and should call out to the pointer if the pointer moved too quickly and the flyer was unable to take an image, otherwise the flyer should confirm ‘good’ once they have taken an image of the current rock in question.
 
-**For Both Real and Fake Meteorites:**
+#### For Both Real and Fake Meteorites
 
 *   Between images, rotate the drone by a small random angle to change the angle of shadows in the image.
 *   Before uploading the data, remove non-useful images (duplicates of the same pointed-at rock, unrelated random pictures, out of focus images). This clean up step will help limiting the amount of work downstream to label the data, and ultimately keep the training dataset clean.

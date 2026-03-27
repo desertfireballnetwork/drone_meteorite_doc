@@ -1,6 +1,7 @@
 ---
-title: RTK base station
+title: RTK base station setup
 ---
+# {{ page.title }}
 
 
 ## Normal (WiFi server mode)

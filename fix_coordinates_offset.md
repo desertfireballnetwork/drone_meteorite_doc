@@ -1,6 +1,7 @@
 ---
 title: Fix coordinates offset
 ---
+# {{ page.title }}
 
 If the RTK station has been moved and not been reset in the interface,
 the RTK-enabled drone's position will be offset by the same amount.

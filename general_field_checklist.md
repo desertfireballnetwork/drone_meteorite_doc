@@ -1,6 +1,7 @@
 ---
 title: General field checklists
 ---
+# {{ page.title }}
 
 _Tip: you can copy/paste these lists into a [Google Keep checklist](https://keep.google.com/) or similar app_
 
