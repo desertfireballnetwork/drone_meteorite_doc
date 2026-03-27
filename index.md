@@ -1,14 +1,14 @@
 # Drone Meteorite Searching Doc
 
 Welcome to the documentation, tips, and checklists for finding meteorites with a drone!
-This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/).
+This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/){: .btn .btn-blue }
 
 
 ## Helping with meteorite candidates review?
 
  - [Stage 1 meteorite review](stage1_help.html)
  - [Stage 2 meteorite review](stage2_help.html)
- - [Stage 4 meteorite review](stage4_help.html) **TODO**
+ - [Stage 4 meteorite review](stage4_help.html) Coming soon {: .label .label-yellow }
 
 ## Conducting the drone survey?
  - [Drone checklist](drone_checklist.html)

@@ -14,3 +14,12 @@ exclude:
   - "**/README.md"
 
 logo: "assets/images/logo.png"
+
+color_scheme: dark
+
+
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "https://github.com/desertfireballnetwork/drone_meteorite_doc
+gh_edit_branch: "main"
+gh_edit_view_mode: "tree"
