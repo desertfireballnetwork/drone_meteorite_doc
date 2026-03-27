@@ -2,16 +2,11 @@
 title: Low-resolution orthomosaic
 ---
 # {{ page.title }}
-{: .no_toc }
-## Table of contents
-{: .no_toc .text-delta }
-1. TOC
-{:toc}
 
 ## Introduction
 
+TL;DR: this is optional, but this is a relatively cheap and useful thing to do.
 
-(optional, but this is a relatively cheap thing to do)
 
 **Satellite imagery available online is not always high-enough resolution or up-to-date to be an effective background map.
 For terrains in which the survey images have enough distinguishable features, it is generally not an issue. If the [stage 4 interface](stage4_help.html) is a couple of meters off the target, we can relocate easily, based on a particular bush, tree, rock etc. But in other terrains, in which background features tend to all look similar enough to be confusing, being able to match the survey image to a well georeferenced wider aerial image is really helpful.**

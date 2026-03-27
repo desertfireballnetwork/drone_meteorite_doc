@@ -1,3 +1,5 @@
+# Drone Meteorite Searching Doc
+
 Welcome to the documentation, tips, and checklists for finding meteorites with a drone!
 This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/).
 
@@ -28,6 +30,11 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
   - [Community management](community_management.html) **TODO**
  
 ## [Frequently Asked Questions](FAQ.html)
+
+## Doing foot meteorite searching?
+Wrong site, but don't worry we've [got you covered](https://wiki.dfn.net.au/images/a/a9/Meteorite_searching_advice_handbook.pdf). Good luck!
+
+
 
 _Something missing, not clear, or you've come up with an improved version that you want to share?_
 -> [Raise an issue](https://github.com/desertfireballnetwork/drone_meteorite_doc/issues), or edit directly by [creating a branch](https://github.com/desertfireballnetwork/drone_meteorite_doc/branches).
