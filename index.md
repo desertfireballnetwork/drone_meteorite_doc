@@ -1,14 +1,15 @@
 # Drone Meteorite Searching Doc
 
 Welcome to the documentation, tips, and checklists for finding meteorites with a drone!
-This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/){: .btn .btn-blue }
+This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/).
 
+_________________
 
 ## Helping with meteorite candidates review?
 
  - [Stage 1 meteorite review](stage1_help.html)
  - [Stage 2 meteorite review](stage2_help.html)
- - [Stage 4 meteorite review](stage4_help.html) Coming soon {: .label .label-yellow }
+ - [Stage 4 meteorite review](stage4_help.html)
 
 ## Conducting the drone survey?
  - [Drone checklist](drone_checklist.html)
@@ -22,10 +23,11 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
  - [WiFi extender](wifi_extender.html)
  - [RTK base station](RTK_base_station.html)
  - ~~[Mobile Device RTK set-up](mobile_device_RTK.html)~~
- - [I have found a meteorite, how do I pick it up?](meteorite_curation.html) **TODO**
+ - [I have found a meteorite, how do I pick it up?](meteorite_curation.html)
+ - [Post-trip checklist](post_trip.html)
  
 ## Managing the whole process?
-  - [Which users can do what](user_roles.html)
+  - [Which users can do what on the Webapp](user_roles.html)
   - [Cloud computing ressources deployment](computing_ressources.html)
   - [Community management](community_management.html) **TODO**
  
@@ -34,7 +36,7 @@ This is linked to the [Drone Meteorite Searching Webapp](https://find.gfo.rocks/
 ## Doing foot meteorite searching?
 Wrong site, but don't worry we've [got you covered](https://wiki.dfn.net.au/images/a/a9/Meteorite_searching_advice_handbook.pdf). Good luck!
 
-
+_________________
 
 _Something missing, not clear, or you've come up with an improved version that you want to share?_
 -> [Raise an issue](https://github.com/desertfireballnetwork/drone_meteorite_doc/issues), or edit directly by [creating a branch](https://github.com/desertfireballnetwork/drone_meteorite_doc/branches).
