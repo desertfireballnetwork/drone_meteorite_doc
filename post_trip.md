@@ -15,5 +15,5 @@
 - [ ] Clean cooking kit. Leave a note detailing what are missing/broken items
 - [ ] First-aid kit: replace used/missing items.
 - [ ] Recharge battery station to ~75%
-- [ ] Car condition: organise service, tyres if needed.
+- [ ] Car condition: organise service and tyres if needed. Clean if dirty. Your responsibility to make her mission-ready.
 - [ ] return leased equipment: drone batteries, RTK base station etc.
