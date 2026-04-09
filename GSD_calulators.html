@@ -1,0 +1,147 @@
+---
+layout: default
+title: GSD Calculator
+---
+
+<style>
+  #gsd-calc label { display: block; margin-top: 1rem; font-weight: bold; font-size: 0.9rem; }
+  #gsd-calc select, #gsd-calc input { width: 100%; padding: 0.4rem; margin-top: 0.3rem; font-size: 1rem; box-sizing: border-box; }
+  #gsd-calc .specs { margin-top: 0.75rem; font-size: 0.8rem; color: #555; line-height: 1.7; }
+  #gsd-calc .result { margin-top: 1.25rem; padding: 1rem; background: #f0f0f0; border-radius: 6px; font-size: 0.95rem; }
+  #gsd-calc .result b { font-size: 1.5rem; }
+  #gsd-calc .inline-row { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
+  #gsd-calc .inline-row input { flex: 1; margin-top: 0; }
+  #gsd-calc .inline-row select { width: auto; margin-top: 0; }
+  #gsd-calc hr { margin: 2rem 0; border: none; border-top: 1px solid #ccc; }
+  #gsd-calc button.use-btn {
+    margin-top: 0.6rem; padding: 0.35rem 0.8rem;
+    font-size: 0.85rem; cursor: pointer; display: none;
+    background: #e8f4e8; border: 1px solid #aaa; border-radius: 4px;
+  }
+</style>
+
+<div id="gsd-calc">
+
+<!-- ═══ CALCULATOR 1: Meteorite size → required GSD ═══ -->
+<h2>Meteorite Mass → Required GSD</h2>
+
+<label>Meteorite mass
+  <div class="inline-row">
+    <input type="number" id="mass" min="0" step="any" value="10" oninput="calcMeteorite()">
+    <select id="massUnit" onchange="calcMeteorite()">
+      <option value="g" selected>g</option>
+      <option value="kg">kg</option>
+    </select>
+  </div>
+</label>
+
+<label>Density (kg/m³)
+  <input type="number" id="density" min="1" step="10" value="3200" oninput="calcMeteorite()">
+</label>
+
+<label>Minimum pixels across meteorite
+  <input type="number" id="minPixels" min="1" step="1" value="15" oninput="calcMeteorite()">
+</label>
+
+<div class="result" id="metResult">
+  Diameter: <b id="diamOut">—</b> mm &nbsp;&nbsp; Required GSD: <b id="gsdOut">—</b> mm/px
+</div>
+
+<button class="use-btn" id="useBtn" onclick="useGSD()">↓ Use this GSD in the calculator below</button>
+
+<hr>
+
+<!-- ═══ CALCULATOR 2: GSD → Flight height ═══ -->
+<h2 id="calc2">GSD → Flight Height</h2>
+
+<label>Drone / Camera
+  <select id="droneSelect" onchange="update()">
+    <option value="">— select —</option>
+    <option value="m4e">DJI Matrice 4 Enterprise M4E</option>
+    <option value="m3e">DJI Mavic 3 Enterprise</option>
+    <option value="p1_35">DJI Matrice 300 RTK + Zenmuse P1 (35 mm)</option>
+    <option value="p1_24">DJI Matrice 300 RTK + Zenmuse P1 (24 mm)</option>
+    <option value="p1_50" selected>DJI Matrice 300 RTK + Zenmuse P1 (50 mm)</option>
+    <option value="p4rtk">DJI Phantom 4 RTK</option>
+  </select>
+</label>
+
+<div class="specs" id="specs"></div>
+
+<label>Target GSD (mm/px)
+  <input type="number" id="gsd" min="0.1" step="0.01" value="2" oninput="update()">
+</label>
+
+<div class="result">
+  Flight height: <b id="out">—</b> <span id="outFt" style="font-size:0.9rem;color:#555"></span>
+</div>
+
+</div><!-- end #gsd-calc -->
+
+<script>
+function calcMeteorite() {
+  const massRaw = parseFloat(document.getElementById('mass').value);
+  const unit    = document.getElementById('massUnit').value;
+  const rho     = parseFloat(document.getElementById('density').value);
+  const nPx     = parseFloat(document.getElementById('minPixels').value);
+  const massKg  = unit === 'g' ? massRaw / 1000 : massRaw;
+
+  if (isNaN(massKg) || massKg <= 0 || isNaN(rho) || rho <= 0 || isNaN(nPx) || nPx <= 0) {
+    document.getElementById('diamOut').textContent = '—';
+    document.getElementById('gsdOut').textContent  = '—';
+    document.getElementById('useBtn').style.display = 'none';
+    return;
+  }
+
+  const V   = massKg / rho;
+  const dM  = 2 * Math.pow((3 * V) / (4 * Math.PI), 1/3);
+  const dMM = dM * 1000;
+  const gsd = dMM / nPx;
+
+  document.getElementById('diamOut').textContent = dMM.toFixed(1);
+  document.getElementById('gsdOut').textContent  = gsd.toFixed(2);
+  document.getElementById('useBtn').style.display = 'inline-block';
+}
+
+function useGSD() {
+  const gsd = document.getElementById('gsdOut').textContent;
+  document.getElementById('gsd').value = parseFloat(gsd).toFixed(2);
+  update();
+  document.getElementById('calc2').scrollIntoView({ behavior: 'smooth' });
+}
+
+const DRONES = {
+  m4e:   { imgW:5280, imgH:3956, sW:17.3, sH:13, fl:12.3 },
+  m3e:   { imgW:5280, imgH:3956, sW:17.3, sH:13, fl:12.3 },
+  p1_35: { imgW:8192, imgH:5460, sW:35.9, sH:24, fl:35   },
+  p1_24: { imgW:8192, imgH:5460, sW:35.9, sH:24, fl:24   },
+  p1_50: { imgW:8192, imgH:5460, sW:35.9, sH:24, fl:50   },
+  p4rtk: { imgW:5472, imgH:3648, sW:13.2, sH:8,  fl:8.8  },
+};
+
+function update() {
+  const key = document.getElementById('droneSelect').value;
+  const gsd = parseFloat(document.getElementById('gsd').value);
+  const specsEl = document.getElementById('specs');
+
+  if (key) {
+    const d = DRONES[key];
+    specsEl.innerHTML = d.imgW + ' × ' + d.imgH + ' px &nbsp;|&nbsp; sensor ' + d.sW + ' × ' + d.sH + ' mm &nbsp;|&nbsp; f = ' + d.fl + ' mm';
+  } else {
+    specsEl.innerHTML = '';
+  }
+
+  if (!key || isNaN(gsd) || gsd <= 0) {
+    document.getElementById('out').textContent = '—';
+    document.getElementById('outFt').textContent = '';
+    return;
+  }
+
+  const d = DRONES[key];
+  const H = (gsd * d.fl * d.imgW) / (d.sW * 1000);
+  document.getElementById('out').textContent = H.toFixed(1) + ' m';
+  document.getElementById('outFt').textContent = '(' + (H * 3.28084).toFixed(0) + ' ft)';
+}
+
+document.addEventListener('DOMContentLoaded', function() { calcMeteorite(); update(); });
+</script>

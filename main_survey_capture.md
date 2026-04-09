@@ -16,7 +16,7 @@ _Read this if using a drone other than M300 + Zenmuse P1 & 50mm lens._
 ### Pictures quality
 
 *   Image format: JPEG.
-*   Final **ground resolution** should be between 1.8 mm/pix and 2.2 mm/ pix resolution, know your drone, know your resolution. This may be relaxed if looking for larger meteorites (>300g).
+*   Final **ground resolution** should be between 1.8 mm/pix and 2.2 mm/ pix resolution, know your drone, know your resolution. This may be relaxed if looking for larger meteorites (>300g). See the [ground sampling distance caluclators](GSD_calulators.html).
 *   Focus: images should be in focus at all points in the image (even in corners) at the flight altitude.
 *   Motion blur. Maximum flight survey speed shgould be determined so that motion blur does not exceed 1 pixel during one exposure. Note: motion blur may not be visible in the images, so this really needs to be calculated.
 *   Flight speed calculation. Example: shutter speed 1/2000 s, 1 pixel max blur, 2 mm/pixel GSD -> v = 2mm / (1/2000)s = 4 m/s.

@@ -13,6 +13,7 @@ _________________
 
 ## Conducting the drone survey?
  - [Drone checklist](drone_checklist.html)
+ - [GSD calculators](GSD_calulators.html)
  - [Main survey capture](main_survey_capture.html)
  - [Training data capture](training_data_capture.html)
  - [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platforms, need to install dev version yourself._
