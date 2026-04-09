@@ -6,9 +6,9 @@ title: GSD Calculator
 <style>
   #gsd-calc label { display: block; margin-top: 1rem; font-weight: bold; font-size: 0.9rem; }
   #gsd-calc select, #gsd-calc input { width: 100%; padding: 0.4rem; margin-top: 0.3rem; font-size: 1rem; box-sizing: border-box; }
-  #gsd-calc .specs { margin-top: 0.75rem; font-size: 0.8rem; color: #555; line-height: 1.7; }
-  #gsd-calc .result { margin-top: 1.25rem; padding: 1rem; background: #f0f0f0; border-radius: 6px; font-size: 0.95rem; }
-  #gsd-calc .result b { font-size: 1.5rem; }
+  #gsd-calc .specs { margin-top: 0.75rem; font-size: 0.8rem; color: var(--body-text-color); opacity: 0.7; line-height: 1.7; }
+  #gsd-calc .result { margin-top: 1.25rem; padding: 1rem; background: var(--sidebar-color); border: 1px solid var(--border-color); border-radius: 6px; font-size: 0.95rem; color: var(--body-text-color); }
+  #gsd-calc .result b { font-size: 1.5rem; color: var(--body-heading-color); }
   #gsd-calc .inline-row { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
   #gsd-calc .inline-row input { flex: 1; margin-top: 0; }
   #gsd-calc .inline-row select { width: auto; margin-top: 0; }
@@ -16,7 +16,7 @@ title: GSD Calculator
   #gsd-calc button.use-btn {
     margin-top: 0.6rem; padding: 0.35rem 0.8rem;
     font-size: 0.85rem; cursor: pointer; display: none;
-    background: #e8f4e8; border: 1px solid #aaa; border-radius: 4px;
+    background: var(--sidebar-color); border: 1px solid var(--border-color); border-radius: 4px; color: var(--body-text-color);
   }
 </style>
 
@@ -73,7 +73,7 @@ title: GSD Calculator
 </label>
 
 <div class="result">
-  Flight height: <b id="out">—</b> <span id="outFt" style="font-size:0.9rem;color:#555"></span>
+  Flight height: <b id="out">—</b> <span id="outFt" style="font-size:0.9rem;opacity:0.7"></span>
 </div>
 
 </div><!-- end #gsd-calc -->
