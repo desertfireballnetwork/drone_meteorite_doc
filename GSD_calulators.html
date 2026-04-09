@@ -12,7 +12,7 @@ title: GSD Calculator
   #gsd-calc .inline-row { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
   #gsd-calc .inline-row input { flex: 1; margin-top: 0; }
   #gsd-calc .inline-row select { width: auto; margin-top: 0; }
-  #gsd-calc hr { margin: 2rem 0; border: none; border-top: 1px solid #ccc; }
+  #gsd-calc hr { margin: 2rem 0; border: none; border-top: 1px solid var(--border-color); }
   #gsd-calc button.use-btn {
     margin-top: 0.6rem; padding: 0.35rem 0.8rem;
     font-size: 0.85rem; cursor: pointer; display: none;
@@ -51,8 +51,8 @@ title: GSD Calculator
 
 <hr>
 
-<!-- ═══ CALCULATOR 2: GSD → Flight height ═══ -->
-<h2 id="calc2">GSD → Flight Height</h2>
+<!-- ═══ CALCULATOR 2: GSD → Flight height + max speed ═══ -->
+<h2 id="calc2">GSD → Flight Height &amp; Max Speed</h2>
 
 <label>Drone / Camera
   <select id="droneSelect" onchange="update()">
@@ -72,8 +72,20 @@ title: GSD Calculator
   <input type="number" id="gsd" min="0.1" step="0.01" value="2" oninput="update()">
 </label>
 
+<label>Max blur (px)
+  <input type="number" id="maxBlur" min="0.1" step="0.1" value="1" oninput="update()">
+</label>
+
+<label>Shutter speed (1 / <span id="shutterLabel">2000</span> s)
+  <input type="number" id="shutter" min="1" step="1" value="2000" oninput="update()">
+</label>
+
 <div class="result">
   Flight height: <b id="out">—</b> <span id="outFt" style="font-size:0.9rem;opacity:0.7"></span>
+</div>
+
+<div class="result" style="margin-top:0.75rem">
+  Max flight speed: <b id="outMs">—</b> <span id="outKmh" style="font-size:0.9rem;opacity:0.7"></span>
 </div>
 
 </div><!-- end #gsd-calc -->
@@ -120,9 +132,14 @@ const DRONES = {
 };
 
 function update() {
-  const key = document.getElementById('droneSelect').value;
-  const gsd = parseFloat(document.getElementById('gsd').value);
-  const specsEl = document.getElementById('specs');
+  const key      = document.getElementById('droneSelect').value;
+  const gsd      = parseFloat(document.getElementById('gsd').value);
+  const maxBlur  = parseFloat(document.getElementById('maxBlur').value);
+  const shutter  = parseFloat(document.getElementById('shutter').value);
+  const specsEl  = document.getElementById('specs');
+
+  // keep shutter label in sync
+  document.getElementById('shutterLabel').textContent = isNaN(shutter) ? '?' : shutter;
 
   if (key) {
     const d = DRONES[key];
@@ -132,15 +149,33 @@ function update() {
   }
 
   if (!key || isNaN(gsd) || gsd <= 0) {
-    document.getElementById('out').textContent = '—';
+    document.getElementById('out').textContent   = '—';
     document.getElementById('outFt').textContent = '';
+    document.getElementById('outMs').textContent  = '—';
+    document.getElementById('outKmh').textContent = '';
     return;
   }
 
   const d = DRONES[key];
+
+  // Flight height
   const H = (gsd * d.fl * d.imgW) / (d.sW * 1000);
-  document.getElementById('out').textContent = H.toFixed(1) + ' m';
+  document.getElementById('out').textContent   = H.toFixed(1) + ' m';
   document.getElementById('outFt').textContent = '(' + (H * 3.28084).toFixed(0) + ' ft)';
+
+  // Max speed: v = maxBlur * GSD(m) * shutter(1/s)
+  // GSD in m = gsd / 1000
+  // exposure time = 1/shutter s
+  // v(m/s) = (maxBlur * gsd/1000) / (1/shutter) = maxBlur * gsd * shutter / 1000
+  if (!isNaN(maxBlur) && maxBlur > 0 && !isNaN(shutter) && shutter > 0) {
+    const vMs  = (maxBlur * gsd * shutter) / 1000;
+    const vKmh = vMs * 3.6;
+    document.getElementById('outMs').textContent  = vMs.toFixed(2) + ' m/s';
+    document.getElementById('outKmh').textContent = '(' + vKmh.toFixed(1) + ' km/h)';
+  } else {
+    document.getElementById('outMs').textContent  = '—';
+    document.getElementById('outKmh').textContent = '';
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function() { calcMeteorite(); update(); });
