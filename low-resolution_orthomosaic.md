@@ -67,3 +67,6 @@ This is by far the easiest option, it costs money though.
 Luckily, the [Nectar GPU VM](computing_ressources.html) `g2.xlarge` used for the machine learning part comes with 128GB of RAM, good enough for stitching ~2,500 low-res images.
 Easiest option is to keep a very low-spec VM running continuously with the WebODM frontend installed,
 and connect the GPU VM as worker when needed. Instructions to follow **TODO**.
+
+### Run ODM direct from command line
+Follow these [instructions](odm_orthophoto_howto.html).
