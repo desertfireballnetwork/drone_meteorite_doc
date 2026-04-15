@@ -77,3 +77,4 @@ If you have identified a meteor-maybe:
 - [ ] Compass (for scale and magnetism tests)
 - [ ] Hand lens (for identification)
 - [ ] Kitchen scales
+- [ ] Permanent marker

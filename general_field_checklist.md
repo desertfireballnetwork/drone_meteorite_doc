@@ -20,7 +20,8 @@ _Tip: you can copy/paste these lists into a [Google Keep checklist](https://keep
 
 ## Misc
 
-- [ ] Android mobile devices (1 pp who does stage 4). These need good gyro and compass. Cheap devices (<$500) are usually not suitable for this task (Samsung: S series devices are okay, but not the A series). Most people prefer a tablet over a phone for this task.
+- [ ] Android mobile devices (1 per person who does stage 4). These need good gyro and compass. Cheap devices (<$500) are usually not suitable for this task (Samsung: S series devices are okay, but not the A series). Most people prefer a tablet over a phone for this task.
+- [ ] Power banks for the tablets.
 - [ ] hand-held UHF radios (1 pp) + charger.
 
 
