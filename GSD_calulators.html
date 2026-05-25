@@ -93,13 +93,13 @@ title: GSD Calculator
 {% raw %}
 <script>
 var DRONES = {
-  m4e:   { imgW:5280, imgH:3956, sW:17.3, sH:13, fl:12.3 },
-  m3e:   { imgW:5280, imgH:3956, sW:17.3, sH:13, fl:12.3 },
-  p1_35: { imgW:8192, imgH:5460, sW:35.9, sH:24, fl:35   },
-  p1_24: { imgW:8192, imgH:5460, sW:35.9, sH:24, fl:24   },
-  p1_50: { imgW:8192, imgH:5460, sW:35.9, sH:24, fl:50   },
-  p4rtk: { imgW:5472, imgH:3648, sW:13.2, sH:8,  fl:8.8  },
-  ma2:   { imgW:8000, imgH:6000, sW:6.4,  sH:4.8, fl:4.5 }
+  m4e:   { imgW:5280, imgH:3956, sW:17.3, sH:13,  fl:12.3, maxShutter:2000 },
+  m3e:   { imgW:5280, imgH:3956, sW:17.3, sH:13,  fl:12.3, maxShutter:2000 },
+  p1_35: { imgW:8192, imgH:5460, sW:35.9, sH:24,  fl:35,   maxShutter:2000 },
+  p1_24: { imgW:8192, imgH:5460, sW:35.9, sH:24,  fl:24,   maxShutter:2000 },
+  p1_50: { imgW:8192, imgH:5460, sW:35.9, sH:24,  fl:50,   maxShutter:2000 },
+  p4rtk: { imgW:5472, imgH:3648, sW:13.2, sH:8,   fl:8.8,  maxShutter:2000 },
+  ma2:   { imgW:8000, imgH:6000, sW:6.4,  sH:4.8, fl:4.5,  maxShutter:null }
 };
 
 function calcMeteorite() {
@@ -142,7 +142,11 @@ function update() {
 
   if (key) {
     var d = DRONES[key];
-    specsEl.innerHTML = d.imgW + ' x ' + d.imgH + ' px | sensor ' + d.sW + ' x ' + d.sH + ' mm | f = ' + d.fl + ' mm';
+    var shutterNote = d.maxShutter ? 'max mechanical shutter: 1/' + d.maxShutter : 'electronic shutter only';
+    specsEl.innerHTML = d.imgW + ' x ' + d.imgH + ' px | sensor ' + d.sW + ' x ' + d.sH + ' mm | f = ' + d.fl + ' mm | ' + shutterNote;
+    if (d.maxShutter) {
+      document.getElementById('shutter').value = d.maxShutter;
+    }
   } else {
     specsEl.innerHTML = '';
   }
