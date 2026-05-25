@@ -35,7 +35,7 @@ _________________
 ## [Frequently Asked Questions](FAQ.html)
 
 ## Doing foot meteorite searching?
-Wrong site, but don't worry we've [got you covered](https://wiki.dfn.net.au/images/a/a9/Meteorite_searching_advice_handbook.pdf). Good luck!
+Wrong site, but don't worry we've [got you covered](https://wiki.dfn.net.au/images/Meteorite_searching_advice_handbook.pdf). Good luck!
 
 _________________
 
