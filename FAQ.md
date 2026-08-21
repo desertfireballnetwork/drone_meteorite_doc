@@ -8,6 +8,7 @@ title: Frequently Asked Questions
 1. TOC
 {:toc}
 
+
 ## Appearance
 
 ### The webpages don't display nicely on my phone
@@ -18,11 +19,12 @@ While it still works, we do not recommand you do stages 1 & 2 on a phone.
 ## Features/Design choices
 
 ### Can I be notified when there is new data for review?
-This feature is not currently implemented, but it's on the list of future improvements.
+This is currently being implemented.
 
 
 ### Stage 4 would be better on a standalone app.
-This is on the cards, but we need significant funding to make this happen.
+This is currently being implemented, it will be Android-only,
+and be able to do Stage 4 fully offline.
 
 
 ### In stage 4, why doesn't the webapp provide some route planning suggestion to optimally visit the candidates in the least amount of walking?
@@ -41,7 +43,7 @@ See the [user roles guide](user_roles.html).
 
 [This blog post](https://gfo.rocks/blog/2025/12/03/DN250711_02_Dale_meteorite.html) gives a good overview.
 
-Whereas [this paper](https://iopscience.iop.org/article/10.3847/2041-8213/ac66d4) explains the full methodology and terminology used.
+These papers explain the full methodology and terminology used: https://iopscience.iop.org/article/10.3847/2041-8213/ac66d4 & https://arxiv.org/abs/2605.19179 .
 
 
 

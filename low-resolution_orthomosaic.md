@@ -62,11 +62,8 @@ _not sure if satellite imagery is going to be good enough in your area?_ The web
 This is by far the easiest option, it costs money though.
 
 ### Run your own instances of WebODM/NodeODM
-[RAM requirements grow linearly with the number of images](https://docs.webodm.org/hardware-requirements/)), so even on a small search area you can end up needing a fairly high-RAM machine to process your data.
+[RAM requirements grow linearly with the number of images](https://docs.opendronemap.org/installation/)), so even on a small search area you can end up needing a fairly high-RAM machine to process your data.
 
-Luckily, the [Nectar GPU VM](computing_ressources.html) `g2.xlarge` used for the machine learning part comes with 128GB of RAM, good enough for stitching ~2,500 low-res images.
-Easiest option is to keep a very low-spec VM running continuously with the WebODM frontend installed,
-and connect the GPU VM as worker when needed. Instructions to follow **TODO**.
 
 ### Run ODM direct from command line
 Follow these [instructions](odm_orthophoto_howto.html).
