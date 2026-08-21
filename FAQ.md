@@ -43,7 +43,7 @@ See the [user roles guide](user_roles.html).
 
 [This blog post](https://gfo.rocks/blog/2025/12/03/DN250711_02_Dale_meteorite.html) gives a good overview.
 
-These papers explain the full methodology and terminology used: https://iopscience.iop.org/article/10.3847/2041-8213/ac66d4 & https://arxiv.org/abs/2605.19179 .
+These papers explain the full methodology and terminology used: [https://iopscience.iop.org/article/10.3847/2041-8213/ac66d4](https://iopscience.iop.org/article/10.3847/2041-8213/ac66d4) & [https://arxiv.org/abs/2605.19179](https://arxiv.org/abs/2605.19179) .
 
 
 
