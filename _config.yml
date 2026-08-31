@@ -19,6 +19,10 @@ defaults:
       type: "pages"
     values:
       layout: default
+  - scope:
+      path: "assets"
+    values:
+      layout:
 
 logo: "assets/images/logo.png"
 
