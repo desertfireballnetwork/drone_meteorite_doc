@@ -15,9 +15,10 @@ _________________
  - [Stage 4 meteorite review](stage4_help.html)
 
 ## Conducting the drone survey?
- - [Drone checklist](drone_checklist.html)
+ - [Drone surveying pack list](drone_checklist.html)
  - [Calculators](GSD_calulators.html)
  - [Main survey capture](main_survey_capture.html)
+ - [Printable drone operations checklists](printable_checklist.html)
  - [Training data capture](training_data_capture.html)
  - [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platforms, need to install dev version yourself._
  - [Low-resolution orthomosaic](low-resolution_orthomosaic.html)

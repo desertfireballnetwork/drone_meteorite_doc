@@ -1,5 +1,5 @@
 ---
-title: Drone checklist
+title: Surveying packing list
 ---
 # {{ page.title }}
 
@@ -10,9 +10,10 @@ title: Drone checklist
 - [ ] Batteries (charge them just before the trip).
 - [ ] Battery charger.
 - [ ] Memory cards. Need couple of good quality >64GB cards. M300 uses SD, modern small drones tend to use micro-SD.
-- [ ] Something to make a landing pad (e.g. tarp).
-- [ ] stuff for making ground control points (optional, for the low-res survey)
-- [ ] RTK base station + batteries (e.g. Trimble R10 or R12) OR nearby accessible NTRIP broadcaster. [Aus: GA NTRIP](https://gnss.ga.gov.au/stream)
+- [ ] Landing pad.
+- [ ] (optional): stuff for making ground control points (for the low-res ortho survey).
+- [ ] [RTK base station](RTK_base_station.html) OR nearby accessible NTRIP broadcaster. [Aus: GA NTRIP](https://gnss.ga.gov.au/stream)
+
 
 ## Computer things
 - [ ] Laptop with ~1TB free space.

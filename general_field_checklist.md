@@ -39,4 +39,4 @@ And a battery + solar system (to have quiet time at night while still be able to
 - [ ] Roof-rack solar system: ~300W panel + MC4 fuse + MC4 extension leads + MC4 to Anderson adapter (all of this should be mounted permanently on Rhonda and not removed).
 
 
-## [Drone checklist](drone_checklist.html)
+## [Surveying pack list](drone_checklist.html)

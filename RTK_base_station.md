@@ -1,15 +1,57 @@
 ---
-title: RTK base station setup
+title: RTK base station
 ---
 # {{ page.title }}
 
+Use for any surveying where a permanent NTRIP base station is not usable (<50 km away).
 
-## Normal (WiFi server mode)
-TODO
 
-## In client mode
+## Accessories list
 
-Receiver borrowed from Geospatial Sciences: Trimble R10 [(help portal)](https://help.fieldsystems.trimble.com/r10/home.htm)
+- [ ] Trimble unit.
+- [ ] At least 2 internal batteries.
+- [ ] External batteries.
+- [ ] Battery charger.
+- [ ] Tripod.
+- [ ] Leveller thingy. **What is this actually called?**
+- [ ] Base Station Extension. **What is this actually called?**
+- [ ] 
+- [ ] 
+
+
+If needed, RTFM [(Trimble R10)](https://help.fieldsystems.trimble.com/r10/home.htm).
+
+
+## Physical setup
+
+- Choose a spot where the unit is not going to get bumped into.
+- But is still close enough so battery changes are easy.
+- Don't worry about levelling.
+- Do this early before drone setup.
+
+![trimble](assets/images/Trimble_R10_base_station_overview.jpg)
+
+
+
+## Trimble configuration
+
+Soft (Factory reset), if unsure who used it last.
+-> Hold power buton for 15-Second.
+
+- Default IP address: is on a sticker on the receiver.
+- Default login: admin/password
+
+
+
+## RTK setup on drone controller
+![trimble](assets/images/M300_controller_RTK_setup.jpg)
+
+
+
+
+## ~~Trimble configuration client mode~~ (NOT USED anymore)
+
+Trimble R10 [(help portal)](https://help.fieldsystems.trimble.com/r10/home.htm)
 
 Factory reset if needed - clears all WiFi client settings, that can be whatever from previous user. It starts in WiFi AP mode then.
 
