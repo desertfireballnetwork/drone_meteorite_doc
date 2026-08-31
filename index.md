@@ -1,3 +1,6 @@
+---
+title: Home
+---
 # Drone Meteorite Searching Doc
 
 Welcome to the documentation, tips, and checklists for finding meteorites with a drone!

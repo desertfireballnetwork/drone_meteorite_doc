@@ -13,6 +13,13 @@ exclude:
   - README.md
   - "**/README.md"
 
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: default
+
 logo: "assets/images/logo.png"
 
 color_scheme: dark

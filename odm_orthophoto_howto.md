@@ -1,3 +1,6 @@
+---
+title: ODM Orthophoto (GeoTIFF) — Install & Run Guide
+---
 # ODM Orthophoto (GeoTIFF) — Install & Run Guide
 
 Tested on **Ubuntu 24.04**. Produces a GeoTIFF orthophoto only — no 3D models, no point clouds.
