@@ -30,3 +30,7 @@ And a battery + solar system (to have quiet time at night while still be able to
 ## [Surveying pack list](drone_checklist.html)
 
 ## [Stage 4 pack list](stage4_help.html#accessories-list)
+
+## [Training data pack list](training_data_capture.html#pack-list)
+
+

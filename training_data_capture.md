@@ -5,7 +5,7 @@ title: Training Data Collection
 
 Capturing quality training data is key to the whole process. Remember: Garbage in, garbage out. Hence take extra care in doing this step well.
 
-## [Drone flight checklists](main_survey_capture.html#day-start-checklist)
+## [Drone flight checklists](printable_checklist.html)
 
 
 ## True images (meteorites)

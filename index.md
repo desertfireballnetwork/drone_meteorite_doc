@@ -25,7 +25,7 @@ _________________
 
 ## Organising a field campaign?
  - [General checklist](general_field_checklist.html)
- - [WiFi extender](wifi_extender.html)
+ - ~~[WiFi extender](wifi_extender.html)~~
  - [RTK base station](RTK_base_station.html)
  - ~~[Mobile Device RTK set-up](mobile_device_RTK.html)~~
  - [I have found a meteorite, how do I pick it up?](meteorite_curation.html)

@@ -17,6 +17,7 @@ title: Surveying packing list
 - [ ] [RTK base station pack list](RTK_base_station.html#accessories-list) OR nearby accessible NTRIP broadcaster. [Aus: GA NTRIP](https://gnss.ga.gov.au/stream)
 
 
+![stage4](assets/images/M300_ready_to_fly.jpg)
 
 
 ## Computer things

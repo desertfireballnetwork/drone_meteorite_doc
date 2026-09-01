@@ -24,6 +24,8 @@ title: Printable checklist
 
 _†: the Drone will complain about RTK __only__ when the RTK position changed by a lot (many kilometres). Otherwise, there will be a systematic offset error, typically worse than if RTK was not used at all_
 
+
+
 <div style="page-break-after: always;"></div>
 # {{ site.title }}
 
