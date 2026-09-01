@@ -10,31 +10,31 @@ _________________
 
 ## Helping with meteorite candidates review?
 
- - [Stage 1 meteorite review](stage1_help.html)
- - [Stage 2 meteorite review](stage2_help.html)
- - [Stage 4 meteorite review](stage4_help.html)
+ - <i class="fa-solid fa-desktop"></i> [Stage 1 meteorite review](stage1_help.html)
+ - <i class="fa-solid fa-desktop"></i> [Stage 2 meteorite review](stage2_help.html)
+ - <i class="fa-solid fa-person-walking"></i> [Stage 4 meteorite review](stage4_help.html)
 
 ## Conducting the drone survey?
- - [Drone surveying pack list](drone_checklist.html)
- - [Calculators](GSD_calulators.html)
- - [Main survey capture](main_survey_capture.html)
- - [Printable drone operations checklists](printable_checklist.html)
- - [Training data capture](training_data_capture.html)
- - [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platforms, need to install dev version yourself._
- - [Low-resolution orthomosaic](low-resolution_orthomosaic.html)
+ - <i class="fa-solid fa-clipboard-list"></i> [Drone surveying pack list](drone_checklist.html)
+ - <i class="fa-solid fa-calculator"></i> [Calculators](GSD_calulators.html)
+ - <i class="fa-solid fa-helicopter"></i> [Main survey capture](main_survey_capture.html)
+ - <i class="fa-solid fa-print"></i> [Printable drone operations checklists](printable_checklist.html)
+ - <i class="fa-solid fa-images"></i> [Training data capture](training_data_capture.html)
+ - <i class="fa-solid fa-upload"></i> [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platforms, need to install dev version yourself._
+ - <i class="fa-solid fa-map"></i> [Low-resolution orthomosaic](low-resolution_orthomosaic.html)
 
 ## Organising a field campaign?
- - [General checklist](general_field_checklist.html)
- - ~~[WiFi extender](wifi_extender.html)~~
- - [RTK base station](RTK_base_station.html)
- - ~~[Mobile Device RTK set-up](mobile_device_RTK.html)~~
- - [I have found a meteorite, how do I pick it up?](meteorite_curation.html)
- - [Post-trip checklist](post_trip.html)
+ - <i class="fa-solid fa-clipboard-list"></i> [General checklist](general_field_checklist.html)
+ - ~~<i class="fa-solid fa-wifi"></i> [WiFi extender](wifi_extender.html)~~
+ - <i class="fa-solid fa-satellite-dish"></i> [RTK base station](RTK_base_station.html)
+ - ~~<i class="fa-solid fa-mobile-screen"></i> [Mobile Device RTK set-up](mobile_device_RTK.html)~~
+ - <i class="fa-solid fa-meteor"></i> [I have found a meteorite, how do I pick it up?](meteorite_curation.html)
+ - <i class="fa-solid fa-right-from-bracket"></i> [Post-trip checklist](post_trip.html)
  
 ## Managing the whole process?
-  - [Which users can do what on the Webapp](user_roles.html)
-  - [Cloud computing ressources deployment](computing_ressources.html)
-  - [Community management](community_management.html) **TODO**
+  - <i class="fa-solid fa-users"></i> [Which users can do what on the Webapp](user_roles.html)
+  - <i class="fa-solid fa-cloud"></i> [Cloud computing ressources deployment](computing_ressources.html)
+  - <i class="fa-solid fa-people-group"></i> [Community management](community_management.html) **TODO**
  
 ## [Frequently Asked Questions](FAQ.html)
 

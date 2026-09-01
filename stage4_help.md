@@ -4,8 +4,10 @@ title: Stage 4 meteorite candidates review
 # {{ page.title }}
 
 
-
 ## Introduction
+Stage 4 is the in situ visit of meteorite candidates that remain after the remote sensing assessments.
+To facilitate this, a GPS-enabled slippy map is used.
+The map has background satellite imagery, with drone survey images overlaid on top, and an interactive layer for the meteorite candidates.
 
 
 ## Accessories list
@@ -19,7 +21,7 @@ title: Stage 4 meteorite candidates review
 
 
 
-## How-to
+## What to do
 
 ### Set up
 - [ ] Install the stage 4 app on the tablet.
@@ -45,7 +47,7 @@ title: Stage 4 meteorite candidates review
 - [ ] Rest.
 
 
-## How-to
+## How to use the Stage 4 app
 
 ![stage4](assets/screenshots/stage4.png)
 
@@ -53,9 +55,14 @@ title: Stage 4 meteorite candidates review
 ### Android app
 Coming soon!
 
+Doc TODO once app is finished.
 
-### Web browser
-Must remain connected to the internet for it to work.
+
+### Web browser version
+The web version has more or less the same functionalities as the mobile app,
+except that it is browser-based.
+This means that it cannot cache the data very well.
+Use only if you can maintain an internet connection.
 
 
 
