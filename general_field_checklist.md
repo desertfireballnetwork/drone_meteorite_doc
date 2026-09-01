@@ -7,22 +7,10 @@ _Tip: you can copy/paste these lists into a [Google Keep checklist](https://keep
 
 
 ## Comms
-
 - [ ] Starlink unit.
 - [ ] Starlink ethernet adapter.
 - [ ] Re-activate Starlink subscription that should be on pause (ask Hadrien).
-- [ ] WiFi router with WAN port and swappable antenna (SMA).
-- [ ] TP-link router as wifi extender with a mast to go on the ute tray.
-- [ ] 5+ m ethernet cable for the router.
-- [ ] high-gain 2.4GHz WiFi antenna.
 
-
-
-## Misc
-
-- [ ] Android mobile devices (1 per person who does stage 4). These need good gyro and compass. Cheap devices (<$500) are usually not suitable for this task (Samsung: S series devices are okay, but not the A series). Most people prefer a tablet over a phone for this task.
-- [ ] Power banks for the tablets.
-- [ ] hand-held UHF radios (1 pp) + charger.
 
 
 ## Power
@@ -40,3 +28,5 @@ And a battery + solar system (to have quiet time at night while still be able to
 
 
 ## [Surveying pack list](drone_checklist.html)
+
+## [Stage 4 pack list](stage4_help.html#accessories-list)

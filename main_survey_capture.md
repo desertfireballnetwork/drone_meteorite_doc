@@ -81,21 +81,21 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
 ### M300
 
 *   First, scroll to the bottom and select 'Advanced Settings'
-    - [ ] change Side and Frontal Overlap to 10% each, Margin should be 0.
+    - [ ] Change Side and Frontal Overlap to 10% each, Margin should be 0.
     - [ ] Distance Interval Shot.
-    - [ ] Shutter priority.
+    - [ ] Shutter priority (S mode).
     - [ ] Shutter speed: 1/2000 s.
 *   Go back to parent menu, and start from the top.
-    - [ ] Select your camera 'Zenmuse P1' and your camera lens '50 mm'
-    - [ ] Smart Oblique 'OFF'
-    - [ ] GSD should be ~0.2 cm/pix when you are finished, but it should not be correct when it first appears
-    - [ ] Safe takeoff altituted should be 20 m, adjust if local terrain requires
-    - [ ] Terrain Follow 'OFF'
+    - [ ] Select your camera 'Zenmuse P1' and your camera lens '50 mm'.
+    - [ ] Smart Oblique 'OFF'.
+    - [ ] GSD should match the [calculator](GSD_calulators.html) when you are finished, but it should not be correct when it first appears
+    - [ ] Safe takeoff altituted should be 20 m, adjust if local terrain requires.
+    - [ ] Terrain Follow 'OFF'.
     - [ ] Altitude Mode 'Relative to Takeoff Point'
-    - [ ] Flight Route Altitude should be between 25-30 m
+    - [ ] Flight Route Altitude should be between 20-30 m. Check [calculator](GSD_calulators.html).
     - [ ] Target Surface to Takeoff point should be 0 unless there are major elevation differences between your takeoff point and the survey area
-    - [ ] Takeoff Speed '10 m/s'
-    - [ ] Speed '4 m/s'
+    - [ ] Takeoff Speed '10 m/s'.
+    - [ ] Speed '4 m/s'. Check [calculator](GSD_calulators.html)
     - [ ] Course Angle: adjust to whatever makes sense for your polygon, typically cross the fall line.
     - [ ] Elevation optimization 'OFF'
     - [ ] Upon Completion 'Return to Home'
@@ -127,38 +127,7 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
 *   Capturing quality images and metadata is key to the whole process. And there are many things that can degrade image quality. We recommand you copy/paste the checklists below in an app like [Google Keep](https://keep.google.com/) and actually tick them off.
 
 
+### [Printable drone operations checklists](printable_checklist.html)
 
-### Day start checklist
-- [ ] Set up RTK basestation (needs time to get a lock)
-- [ ] Reset position in the basestation RTK web interface (**needs to be done every time the RTK basestation moves †**)
-- [ ] Deploy landing pad
-- [ ] Set up drone + camera (M300: use 50mm lens)
-- [ ] Clean lens
-- [ ] Controller power
-- [ ] Drone power
-- [ ] Drone IMU/Compass calibration
-    *   Camera view, Flight controller settings, Sensor status - IMU/Compass - calibrate both as per instructions
-    *   Camera gimball calibration - Camera, Gimball settings - calibrate
-- [ ] Go through [flight parameters](#flight-parameters) checklist
-- [ ] Configure connection to RTK base station or NTRIP.
-- [ ] Select flight plan
-- [ ] Assess whether lighting conditions are okay (sun angles if sunny, enough light for good picture quality if cloudy)
+Print and laminate these, and check items off with a whiteboard marker.
 
-
-### Pre-flight checklist
-- [ ] Fresh batteries
-- [ ] 20 GB free on memory card
-- [ ] Lens looks clean
-
-### End-flight checklist
-- [ ] Hot-swap batteries (one at the time)
-- [ ] Change SD card
-
-After the next flight has taken off:
-- [ ] Cycle batteries: drone -> cool down (shade or fridge) -> charging station
-- [ ] Download data: SD card -> computer
-- [ ] check image focus using 100% zoom level on a computer.
-- [ ] make decision on whether there should be a next flight: sun angles -> too long shadows? low light -> too high-ISO?
-
-
-_Note †: the Drone will complain about RTK __only__ when the RTK position changed by a lot (many kilometres). Otherwise, there will be a systematic offset error, typically worse than if RTK was not used at all_

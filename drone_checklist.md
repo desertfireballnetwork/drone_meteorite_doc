@@ -6,13 +6,15 @@ title: Surveying packing list
 ## Drone
 - [ ] Drone.
 - [ ] Drone camera + lenses.
-- [ ] Drone controller.
-- [ ] Batteries (charge them just before the trip).
-- [ ] Battery charger.
+- [ ] Drone controller. Internal Battery charged?
+- [ ] Drone & Controller external batteries: charge them just before the trip.
+- [ ] Battery charger + mains cord.
 - [ ] Memory cards. Need couple of good quality >64GB cards. M300 uses SD, modern small drones tend to use micro-SD.
 - [ ] Landing pad.
 - [ ] (optional): stuff for making ground control points (for the low-res ortho survey).
-- [ ] [RTK base station](RTK_base_station.html) OR nearby accessible NTRIP broadcaster. [Aus: GA NTRIP](https://gnss.ga.gov.au/stream)
+- [ ] [RTK base station pack list](RTK_base_station.html#accessories-list) OR nearby accessible NTRIP broadcaster. [Aus: GA NTRIP](https://gnss.ga.gov.au/stream)
+
+
 
 
 ## Computer things
