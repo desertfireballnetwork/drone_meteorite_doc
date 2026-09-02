@@ -66,17 +66,19 @@ If you have identified a meteor-maybe:
 * Photograph the sample from a variety of angles in-situ. Use a scale (i.e., pen, compass).
 * Send photos to the geochem team.
 * Record the GPS coordinates of your find. Save this to your phone and include in label
-* Using gloves, place the sample into a sample bag. Label the bag with a unique name (i.e., DFN Fall Date - Visit No. - Sample No. e.g., DFN230525-01-02) and the GPS coordinates.
+* Wearing gloves, use a piece of clean aluminium foil to pick up the sample and place it into a teflon bag. The foil and the teflon bag should be the only things in direct contact with the rock - never touch it directly, even with gloves. Label the bag with a unique name (i.e., DFN Fall Date - Visit No. - Sample No. e.g., DFN230525-01-02) and the GPS coordinates.
 * If the rock is fresh, use gloves to take a handful of dirt from below where the rock was located.
 * Place this into a separate sample bag and label the bag.
 * Have a beer - you’ve earnt it!
 
-**The geochem kit should contain:** gloves, sample bags, compass (for scale + magnetism test), hand lens (use for initial identification), kitchen scales.
+**The geochem kit should contain:** gloves, aluminium foil, teflon sample bags, compass (for scale + magnetism test), hand lens (use for initial identification), kitchen scales.
 
 
 
 ## Geochemical Kit Contents
-- [ ] Gloves & Sample bags
+- [ ] Gloves
+- [ ] Aluminium foil
+- [ ] Teflon sample bags
 - [ ] Compass (for scale and magnetism tests)
 - [ ] Hand lens (for identification)
 - [ ] Kitchen scales
