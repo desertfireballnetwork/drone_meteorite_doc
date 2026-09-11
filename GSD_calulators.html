@@ -3,6 +3,9 @@ layout: default
 title: Drone Survey Calculators
 ---
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" integrity="sha512-h9FcoyWjHcOcmEVkxOfTLnmZFWIH0iZhZT1H2TbOq55xssQGEJHEaIm+PgoUaZbRvQTNTluNOEfb1ZRy6D3BOw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" integrity="sha512-puJW3E/qXDqYp9IfhAI54BJEaWIfloJ7JWs7OeD5i6ruC9JZL1gERT1wjtwXFlh7CjE7ZJ+/vcRZRkIYIb6p4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 <style>
   #gsd-calc label { display: block; margin-top: 1rem; font-weight: bold; font-size: 0.9rem; }
   #gsd-calc select, #gsd-calc input { width: 100%; padding: 0.4rem; margin-top: 0.3rem; font-size: 1rem; box-sizing: border-box; }
@@ -19,6 +22,13 @@ title: Drone Survey Calculators
     background: var(--sidebar-color); border: 1px solid var(--border-color);
     border-radius: 4px; color: var(--body-text-color);
   }
+  #gsd-calc .loc-label { display: block; margin-top: 1rem; font-weight: bold; font-size: 0.9rem; }
+  #gsd-calc #sunMap { height: 280px; margin-top: 0.6rem; border: 1px solid var(--border-color); border-radius: 6px; }
+  #gsd-calc .inline-row input#sunDatePicker { flex: 0 0 auto; width: 11rem; }
+  #gsd-calc .latlon-row { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
+  #gsd-calc .latlon-row div { flex: 1; }
+  #gsd-calc .latlon-row label { margin-top: 0; font-weight: normal; font-size: 0.8rem; opacity: 0.75; }
+  #gsd-calc .latlon-row input { margin-top: 0.2rem; }
 </style>
 
 <div id="gsd-calc">
@@ -96,21 +106,32 @@ title: Drone Survey Calculators
   From a location and date, plus a minimum sun elevation angle, work out the local times between which the sun is high enough to fly, and the total flying time available that day.
 </p>
 
-<label>Latitude (decimal degrees, negative for South)
-  <input type="number" id="sunLat" min="-90" max="90" step="any" value="-25" oninput="calcSun()">
-</label>
+<div class="loc-label">Location</div>
+<div id="sunMap"></div>
+<div class="latlon-row">
+  <div>
+    <label for="sunLat">Latitude (decimal degrees, negative for South)</label>
+    <input type="number" id="sunLat" min="-90" max="90" step="any" value="-25" oninput="onLatLonInput()">
+  </div>
+  <div>
+    <label for="sunLon">Longitude (decimal degrees, negative for West)</label>
+    <input type="number" id="sunLon" min="-180" max="180" step="any" value="135" oninput="onLatLonInput()">
+  </div>
+</div>
+<div class="specs">Click or drag the marker on the map to set the location, or type coordinates directly.</div>
 
-<label>Longitude (decimal degrees, negative for West)
-  <input type="number" id="sunLon" min="-180" max="180" step="any" value="135" oninput="calcSun()">
+<label>Date (YYYY-MM-DD)
+  <div class="inline-row">
+    <input type="text" id="sunDateText" inputmode="numeric" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="YYYY-MM-DD" oninput="onDateTextInput()">
+    <input type="date" id="sunDatePicker" oninput="onDatePickerInput()">
+  </div>
 </label>
+<div class="specs">Type or paste a date as YYYY-MM-DD, or use the calendar picker.</div>
 
-<label>Date
-  <input type="date" id="sunDate" oninput="calcSun()">
-</label>
-
-<label>UTC offset of local time (hours, e.g. AEST = 10, ACST = 9.5)
+<label>UTC offset of local time (hours)
   <input type="number" id="sunTz" min="-12" max="14" step="0.25" value="9.5" oninput="calcSun()">
 </label>
+<div class="specs" id="sunTzStatus">Auto-detected from the location above (standard time, not adjusted for daylight saving) &mdash; edit manually if needed.</div>
 
 <label>Minimum sun elevation angle to fly (degrees)
   <input type="number" id="sunMinAngle" min="0" max="90" step="1" value="20" oninput="calcSun()">
@@ -234,13 +255,13 @@ function calcSun() {
   var lon     = parseFloat(document.getElementById('sunLon').value);
   var tz      = parseFloat(document.getElementById('sunTz').value);
   var minAng  = parseFloat(document.getElementById('sunMinAngle').value);
-  var dateVal = document.getElementById('sunDate').value;
+  var dateVal = document.getElementById('sunDateText').value.trim();
 
   var windowEl = document.getElementById('sunWindow');
   var totalEl  = document.getElementById('sunTotal');
   var noonEl   = document.getElementById('sunNoon');
 
-  if (isNaN(lat) || isNaN(lon) || isNaN(tz) || isNaN(minAng) || !dateVal) {
+  if (isNaN(lat) || isNaN(lon) || isNaN(tz) || isNaN(minAng) || !/^\d{4}-\d{2}-\d{2}$/.test(dateVal)) {
     windowEl.textContent = '--';
     totalEl.textContent  = '--';
     noonEl.textContent   = '--';
@@ -295,15 +316,104 @@ function calcSun() {
   totalEl.textContent = totH + 'h ' + pad2(totM) + 'm';
 }
 
+function onDateTextInput() {
+  var v = document.getElementById('sunDateText').value.trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(v)) {
+    document.getElementById('sunDatePicker').value = v;
+  }
+  calcSun();
+}
+
+function onDatePickerInput() {
+  var v = document.getElementById('sunDatePicker').value;
+  if (v) {
+    document.getElementById('sunDateText').value = v;
+  }
+  calcSun();
+}
+
+var sunMap, sunMarker;
+var tzLookupTimer = null;
+
+function initSunMap() {
+  var lat = parseFloat(document.getElementById('sunLat').value);
+  var lon = parseFloat(document.getElementById('sunLon').value);
+
+  sunMap = L.map('sunMap').setView([lat, lon], 4);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 18,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(sunMap);
+
+  sunMarker = L.marker([lat, lon], { draggable: true }).addTo(sunMap);
+
+  sunMarker.on('dragend', function() {
+    var p = sunMarker.getLatLng();
+    setLatLonFromMap(p.lat, p.lng);
+  });
+
+  sunMap.on('click', function(e) {
+    sunMarker.setLatLng(e.latlng);
+    setLatLonFromMap(e.latlng.lat, e.latlng.lng);
+  });
+}
+
+function setLatLonFromMap(lat, lon) {
+  document.getElementById('sunLat').value = lat.toFixed(4);
+  document.getElementById('sunLon').value = lon.toFixed(4);
+  calcSun();
+  lookupTimezone(lat, lon);
+}
+
+function onLatLonInput() {
+  var lat = parseFloat(document.getElementById('sunLat').value);
+  var lon = parseFloat(document.getElementById('sunLon').value);
+  calcSun();
+
+  if (isNaN(lat) || isNaN(lon) || lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+    return;
+  }
+
+  if (sunMap && sunMarker) {
+    sunMarker.setLatLng([lat, lon]);
+    sunMap.panTo([lat, lon]);
+  }
+
+  if (tzLookupTimer) clearTimeout(tzLookupTimer);
+  tzLookupTimer = setTimeout(function() {
+    lookupTimezone(lat, lon);
+  }, 600);
+}
+
+function lookupTimezone(lat, lon) {
+  var statusEl = document.getElementById('sunTzStatus');
+  statusEl.textContent = 'Looking up timezone for this location…';
+  fetch('https://timeapi.io/api/TimeZone/coordinate?latitude=' + lat + '&longitude=' + lon)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var offsetHours = data.standardUtcOffset.seconds / 3600;
+      document.getElementById('sunTz').value = offsetHours;
+      statusEl.textContent = 'Auto-detected: ' + data.timeZone + ' (UTC' + (offsetHours >= 0 ? '+' : '') + offsetHours + ', standard time) — edit manually if needed.';
+      calcSun();
+    })
+    .catch(function() {
+      statusEl.textContent = 'Could not auto-detect timezone (lookup unavailable) — enter the UTC offset manually.';
+    });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   calcMeteorite();
   update();
-  var dateInput = document.getElementById('sunDate');
-  if (!dateInput.value) {
-    var today = new Date();
-    dateInput.value = today.getFullYear() + '-' + pad2(today.getMonth() + 1) + '-' + pad2(today.getDate());
-  }
+
+  var dateText = document.getElementById('sunDateText');
+  var today = new Date();
+  var todayStr = today.getFullYear() + '-' + pad2(today.getMonth() + 1) + '-' + pad2(today.getDate());
+  dateText.value = todayStr;
+  document.getElementById('sunDatePicker').value = todayStr;
+
+  initSunMap();
   calcSun();
+  lookupTimezone(parseFloat(document.getElementById('sunLat').value), parseFloat(document.getElementById('sunLon').value));
 });
 </script>
 {% endraw %}
