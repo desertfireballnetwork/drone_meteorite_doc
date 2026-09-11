@@ -20,7 +20,7 @@ _________________
  - <i class="fa-solid fa-helicopter"></i> [Main survey capture](main_survey_capture.html)
  - <i class="fa-solid fa-print"></i> [Printable drone operations checklists](printable_checklist.html)
  - <i class="fa-solid fa-images"></i> [Training data capture](training_data_capture.html)
- - <i class="fa-solid fa-upload"></i> [Software package for uploading drone data](https://github.com/desertfireballnetwork/aerial-images-upload-gui). _This is a beta version at this stage, not tested on all platforms, need to install dev version yourself._
+ - <i class="fa-solid fa-upload"></i> [Uploading drone image to the cloud](images_upload.html)
  - <i class="fa-solid fa-map"></i> [Low-resolution orthomosaic](low-resolution_orthomosaic.html)
 
 ## Organising a field campaign?

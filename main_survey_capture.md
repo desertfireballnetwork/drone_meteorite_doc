@@ -62,6 +62,7 @@ The simplest way to achieve this is to use Google Earth to cut the search area p
     *   BoreZ\_01\_East
     *   BoreZ\_03\_MiddleNorth ... etc
 *   Once renamed, right click again and select ‘Save Place As…’, which should show you a filesave dialog window. Make sure to save as a .kml
+*   Submit flight plan and dates for approval (Fly Freely).
 
 
 ## Upload survey area to the drone flight controller
