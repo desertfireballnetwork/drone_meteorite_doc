@@ -15,7 +15,21 @@ title: Drone Survey Calculators
   #gsd-calc .inline-row { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
   #gsd-calc .inline-row input { flex: 1; margin-top: 0; }
   #gsd-calc .inline-row select { width: auto; margin-top: 0; }
-  #gsd-calc hr { margin: 2rem 0; border: none; border-top: 1px solid var(--border-color); }
+  #gsd-calc details.calc-section {
+    border: 1px solid var(--border-color); border-radius: 6px;
+    margin-bottom: 1rem; padding: 0 1rem;
+  }
+  #gsd-calc details.calc-section[open] { padding-bottom: 1.2rem; }
+  #gsd-calc details.calc-section summary {
+    cursor: pointer; padding: 0.9rem 0; list-style: none;
+  }
+  #gsd-calc details.calc-section summary::-webkit-details-marker { display: none; }
+  #gsd-calc details.calc-section summary::before {
+    content: '\25B8'; display: inline-block; width: 1em; margin-right: 0.3em;
+    transition: transform 0.15s; color: var(--body-heading-color);
+  }
+  #gsd-calc details.calc-section[open] summary::before { transform: rotate(90deg); }
+  #gsd-calc details.calc-section summary h2 { display: inline; margin: 0; font-size: 1.17em; }
   #gsd-calc button.use-btn {
     margin-top: 0.6rem; padding: 0.35rem 0.8rem;
     font-size: 0.85rem; cursor: pointer; display: none;
@@ -24,7 +38,19 @@ title: Drone Survey Calculators
   }
   #gsd-calc .loc-label { display: block; margin-top: 1rem; font-weight: bold; font-size: 0.9rem; }
   #gsd-calc #sunMap { height: 280px; margin-top: 0.6rem; border: 1px solid var(--border-color); border-radius: 6px; }
-  #gsd-calc .inline-row input#sunDatePicker { flex: 0 0 auto; width: 11rem; }
+  #gsd-calc .date-field { position: relative; margin-top: 0.3rem; }
+  #gsd-calc .date-field input#sunDateText { margin-top: 0; padding-right: 2.4rem; }
+  #gsd-calc .date-field button.date-pick-btn {
+    position: absolute; right: 0.25rem; top: 50%; transform: translateY(-50%);
+    width: auto; margin: 0; padding: 0.3rem 0.5rem;
+    background: transparent; border: none; cursor: pointer;
+    color: var(--body-text-color); opacity: 0.65; font-size: 1rem;
+  }
+  #gsd-calc .date-field button.date-pick-btn:hover { opacity: 1; }
+  #gsd-calc .date-field input#sunDatePicker {
+    position: absolute; left: 0; bottom: 0; width: 1px; height: 1px;
+    padding: 0; margin: 0; border: 0; opacity: 0; pointer-events: none;
+  }
   #gsd-calc .latlon-row { display: flex; gap: 0.4rem; margin-top: 0.3rem; }
   #gsd-calc .latlon-row div { flex: 1; }
   #gsd-calc .latlon-row label { margin-top: 0; font-weight: normal; font-size: 0.8rem; opacity: 0.75; }
@@ -33,7 +59,8 @@ title: Drone Survey Calculators
 
 <div id="gsd-calc">
 
-<h2>Meteorite Mass to Required GSD</h2>
+<details class="calc-section" id="calc1">
+<summary><h2>Meteorite Mass to Required GSD</h2></summary>
 
 <label>Meteorite mass
   <div class="inline-row">
@@ -59,9 +86,10 @@ title: Drone Survey Calculators
 
 <button class="use-btn" id="useBtn" onclick="useGSD()">Use this GSD below</button>
 
-<hr>
+</details>
 
-<h2 id="calc2">GSD to Flight Height and Max Speed</h2>
+<details class="calc-section" id="calc2">
+<summary><h2>GSD to Flight Height and Max Speed</h2></summary>
 
 <label>Drone / Camera
   <select id="droneSelect" onchange="update()">
@@ -98,9 +126,10 @@ title: Drone Survey Calculators
   Max flight speed: <b id="outMs">--</b> <span id="outKmh" style="font-size:0.9rem;opacity:0.7"></span>
 </div>
 
-<hr>
+</details>
 
-<h2>Sun Angle Flying Window</h2>
+<details class="calc-section" id="calc3" ontoggle="onSunSectionToggle(this)">
+<summary><h2>Sun Angle Flying Window</h2></summary>
 
 <p style="font-size:0.85rem; opacity:0.75; margin-top:-0.5rem;">
   From a location and date, plus a minimum sun elevation angle, work out the local times between which the sun is high enough to fly, and the total flying time available that day.
@@ -118,23 +147,19 @@ title: Drone Survey Calculators
     <input type="number" id="sunLon" min="-180" max="180" step="any" value="135" oninput="onLatLonInput()">
   </div>
 </div>
-<div class="specs">Click or drag the marker on the map to set the location, or type coordinates directly.</div>
 
-<label>Date (YYYY-MM-DD)
-  <div class="inline-row">
+<label>Date
+  <div class="date-field">
     <input type="text" id="sunDateText" inputmode="numeric" pattern="[0-9]{4}-[0-9]{2}-[0-9]{2}" placeholder="YYYY-MM-DD" oninput="onDateTextInput()">
-    <input type="date" id="sunDatePicker" oninput="onDatePickerInput()">
+    <button type="button" class="date-pick-btn" onclick="openDatePicker()" aria-label="Pick a date"><i class="fa-solid fa-calendar-days"></i></button>
+    <input type="date" id="sunDatePicker" tabindex="-1" aria-hidden="true" oninput="onDatePickerInput()">
   </div>
 </label>
-<div class="specs">Type or paste a date as YYYY-MM-DD, or use the calendar picker.</div>
 
-<label>UTC offset of local time (hours)
-  <input type="number" id="sunTz" min="-12" max="14" step="0.25" value="9.5" oninput="calcSun()">
-</label>
-<div class="specs" id="sunTzStatus">Auto-detected from the location above (standard time, not adjusted for daylight saving) &mdash; edit manually if needed.</div>
+<input type="hidden" id="sunTz" value="9.5">
 
 <label>Minimum sun elevation angle to fly (degrees)
-  <input type="number" id="sunMinAngle" min="0" max="90" step="1" value="20" oninput="calcSun()">
+  <input type="number" id="sunMinAngle" min="0" max="90" step="1" value="35" oninput="calcSun()">
 </label>
 
 <div class="result">
@@ -143,7 +168,7 @@ title: Drone Survey Calculators
   <div style="margin-top:0.4rem; font-size:0.85rem; opacity:0.7">Solar noon: <span id="sunNoon">--</span></div>
 </div>
 
-<div class="specs">Local times are standard local times (not adjusted for daylight saving) based on the UTC offset entered above. Calculation ignores terrain/horizon obstructions and atmospheric refraction.</div>
+</details>
 
 </div>
 
@@ -187,7 +212,9 @@ function useGSD() {
   var gsd = parseFloat(document.getElementById('gsdOut').textContent);
   document.getElementById('gsd').value = gsd.toFixed(2);
   update();
-  document.getElementById('calc2').scrollIntoView({ behavior: 'smooth' });
+  var section = document.getElementById('calc2');
+  section.open = true;
+  section.scrollIntoView({ behavior: 'smooth' });
 }
 
 function update() {
@@ -237,7 +264,7 @@ function pad2(n) {
 }
 
 function minutesToClock(mins) {
-  // wraps into 0-1440 range and returns {text, dayOffset} where dayOffset is -1/0/+1
+  /* wraps into 0-1440 range and returns {text, dayOffset} where dayOffset is -1/0/+1 */
   var dayOffset = 0;
   while (mins < 0)    { mins += 1440; dayOffset -= 1; }
   while (mins >= 1440) { mins -= 1440; dayOffset += 1; }
@@ -250,10 +277,51 @@ function minutesToClock(mins) {
   return text;
 }
 
+var sunTzName = null;
+
+/* Resolves the UTC offset (and abbreviation, e.g. "AEDT" vs "AEST") that actually
+   applies in an IANA zone on a given calendar date, so daylight saving is picked
+   up automatically instead of assuming a fixed year-round offset. Sampled at
+   12:00 UTC on that date, so it can be off by a day for zones far from UTC and
+   is not exact for the specific hour a DST transition happens on — both are
+   edge cases that don't matter for a day-level flying-window estimate. */
+function getTzInfo(tzName, y, mo, d) {
+  try {
+    var probe = new Date(Date.UTC(y, mo - 1, d, 12, 0, 0));
+
+    var offParts = new Intl.DateTimeFormat('en-US', { timeZone: tzName, timeZoneName: 'shortOffset' }).formatToParts(probe);
+    var offStr = offParts.filter(function(p) { return p.type === 'timeZoneName'; })[0].value; /* e.g. "GMT+11", "GMT+5:30", "GMT" */
+    var m = /GMT([+-]\d{1,2})(?::(\d{2}))?/.exec(offStr);
+    var offsetHours = 0;
+    if (m) {
+      var h = parseInt(m[1], 10);
+      var mins = m[2] ? parseInt(m[2], 10) : 0;
+      offsetHours = h + (h < 0 ? -mins / 60 : mins / 60);
+    }
+
+    var abbrevParts = new Intl.DateTimeFormat('en-US', { timeZone: tzName, timeZoneName: 'short' }).formatToParts(probe);
+    var abbrev = abbrevParts.filter(function(p) { return p.type === 'timeZoneName'; })[0].value;
+
+    return { offsetHours: offsetHours, abbrev: abbrev };
+  } catch (err) {
+    console.error('sun-calc: Intl timezone offset lookup failed for ' + tzName, err);
+    return null;
+  }
+}
+
+/* abbrev (e.g. "AEDT") and the numeric offset (e.g. "UTC+11") carry the same
+   information — show whichever one we have, never both. */
+function tzLabel(tz, abbrev) {
+  var tzText = abbrev || ('UTC' + (tz >= 0 ? '+' : '') + tz);
+  var bits = [];
+  if (sunTzName) bits.push(sunTzName);
+  bits.push(tzText);
+  return ' (' + bits.join(', ') + ')';
+}
+
 function calcSun() {
   var lat     = parseFloat(document.getElementById('sunLat').value);
   var lon     = parseFloat(document.getElementById('sunLon').value);
-  var tz      = parseFloat(document.getElementById('sunTz').value);
   var minAng  = parseFloat(document.getElementById('sunMinAngle').value);
   var dateVal = document.getElementById('sunDateText').value.trim();
 
@@ -261,7 +329,7 @@ function calcSun() {
   var totalEl  = document.getElementById('sunTotal');
   var noonEl   = document.getElementById('sunNoon');
 
-  if (isNaN(lat) || isNaN(lon) || isNaN(tz) || isNaN(minAng) || !/^\d{4}-\d{2}-\d{2}$/.test(dateVal)) {
+  if (isNaN(lat) || isNaN(lon) || isNaN(minAng) || !/^\d{4}-\d{2}-\d{2}$/.test(dateVal)) {
     windowEl.textContent = '--';
     totalEl.textContent  = '--';
     noonEl.textContent   = '--';
@@ -270,6 +338,16 @@ function calcSun() {
 
   var parts = dateVal.split('-');
   var y = parseInt(parts[0], 10), mo = parseInt(parts[1], 10), d = parseInt(parts[2], 10);
+
+  var tzInfo = sunTzName ? getTzInfo(sunTzName, y, mo, d) : null;
+  var tz = tzInfo ? tzInfo.offsetHours : parseFloat(document.getElementById('sunTz').value);
+  if (isNaN(tz)) {
+    windowEl.textContent = '--';
+    totalEl.textContent  = '--';
+    noonEl.textContent   = '--';
+    return;
+  }
+
   var jan1 = Date.UTC(y, 0, 1);
   var thisDay = Date.UTC(y, mo - 1, d);
   var dayOfYear = Math.round((thisDay - jan1) / 86400000) + 1;
@@ -292,28 +370,42 @@ function calcSun() {
   var cosH = (Math.sin(angRad) - Math.sin(latRad) * Math.sin(decl)) / (Math.cos(latRad) * Math.cos(decl));
 
   if (cosH > 1) {
-    windowEl.textContent = 'sun never reaches this angle on this date';
+    windowEl.textContent = 'sun never reaches this angle on this date' + tzLabel(tz, tzInfo && tzInfo.abbrev);
     totalEl.textContent  = '0h 00m';
     return;
   }
   if (cosH < -1) {
-    windowEl.textContent = 'sun stays above this angle all day';
+    windowEl.textContent = 'sun stays above this angle all day' + tzLabel(tz, tzInfo && tzInfo.abbrev);
     totalEl.textContent  = '24h 00m';
     return;
   }
 
-  var H = Math.acos(cosH) * 180 / Math.PI; // hour angle, degrees
+  var H = Math.acos(cosH) * 180 / Math.PI; /* hour angle, degrees */
   var halfDayMin = 4 * H;
 
   var startMin = solarNoonMin - halfDayMin;
   var endMin   = solarNoonMin + halfDayMin;
 
-  windowEl.textContent = minutesToClock(startMin) + ' to ' + minutesToClock(endMin);
+  windowEl.textContent = minutesToClock(startMin) + ' to ' + minutesToClock(endMin) + tzLabel(tz, tzInfo && tzInfo.abbrev);
 
   var totalMin = 2 * halfDayMin;
   var totH = Math.floor(totalMin / 60);
   var totM = Math.round(totalMin % 60);
   totalEl.textContent = totH + 'h ' + pad2(totM) + 'm';
+}
+
+function openDatePicker() {
+  var picker = document.getElementById('sunDatePicker');
+  var text = document.getElementById('sunDateText').value.trim();
+  if (/^\d{4}-\d{2}-\d{2}$/.test(text)) {
+    picker.value = text;
+  }
+  try {
+    picker.showPicker();
+  } catch (err) {
+    console.error('sun-calc: showPicker() unavailable, falling back to focus()', err);
+    picker.focus();
+  }
 }
 
 function onDateTextInput() {
@@ -336,26 +428,55 @@ var sunMap, sunMarker;
 var tzLookupTimer = null;
 
 function initSunMap() {
+  var mapEl = document.getElementById('sunMap');
+
+  if (typeof L === 'undefined') {
+    console.error('sun-calc: Leaflet (global L) is not defined — leaflet.min.js did not load/execute.');
+    mapEl.textContent = 'Map failed to load (Leaflet library did not load). Check the browser console/network tab, or your internet connection.';
+    mapEl.style.cssText += 'display:flex;align-items:center;justify-content:center;padding:1rem;font-size:0.85rem;text-align:center;opacity:0.7;';
+    return;
+  }
+
   var lat = parseFloat(document.getElementById('sunLat').value);
   var lon = parseFloat(document.getElementById('sunLon').value);
 
-  sunMap = L.map('sunMap').setView([lat, lon], 4);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-  }).addTo(sunMap);
+  try {
+    sunMap = L.map('sunMap').setView([lat, lon], 4);
+    console.log('sun-calc: Leaflet map created OK', sunMap);
 
-  sunMarker = L.marker([lat, lon], { draggable: true }).addTo(sunMap);
+    var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    });
+    tileLayer.on('tileerror', function(err) {
+      console.error('sun-calc: tile failed to load', err);
+    });
+    tileLayer.on('load', function() {
+      console.log('sun-calc: tiles loaded OK');
+    });
+    tileLayer.addTo(sunMap);
 
-  sunMarker.on('dragend', function() {
-    var p = sunMarker.getLatLng();
-    setLatLonFromMap(p.lat, p.lng);
-  });
+    sunMarker = L.marker([lat, lon], { draggable: true }).addTo(sunMap);
 
-  sunMap.on('click', function(e) {
-    sunMarker.setLatLng(e.latlng);
-    setLatLonFromMap(e.latlng.lat, e.latlng.lng);
-  });
+    sunMarker.on('dragend', function() {
+      var p = sunMarker.getLatLng();
+      setLatLonFromMap(p.lat, p.lng);
+    });
+
+    sunMap.on('click', function(e) {
+      sunMarker.setLatLng(e.latlng);
+      setLatLonFromMap(e.latlng.lat, e.latlng.lng);
+    });
+
+    /* just-the-docs' content column can resize/animate after the map is created
+       (fonts, sidebar collapse), which leaves Leaflet's internal tile grid sized
+       against a stale container size. */
+    setTimeout(function() { sunMap.invalidateSize(); }, 300);
+  } catch (err) {
+    console.error('sun-calc: error initialising Leaflet map', err);
+    mapEl.textContent = 'Map failed to initialise: ' + err.message;
+    mapEl.style.cssText += 'display:flex;align-items:center;justify-content:center;padding:1rem;font-size:0.85rem;text-align:center;opacity:0.7;';
+  }
 }
 
 function setLatLonFromMap(lat, lon) {
@@ -385,25 +506,42 @@ function onLatLonInput() {
   }, 600);
 }
 
+/* timeapi.io resolves coordinates to the precise IANA zone for that exact spot,
+   which is sometimes a real but obscure local-custom zone rather than the
+   official one — e.g. the tiny Nullarbor town of Eucla uses an unofficial
+   UTC+8:45 split-the-difference offset, when Western Australia's actual legal
+   time there is AWST (Australia/Perth, UTC+8). The API has no option to avoid
+   this (only latitude/longitude are accepted), so known cases are aliased here. */
+var TZ_ALIASES = {
+  'Australia/Eucla': 'Australia/Perth'
+};
+
 function lookupTimezone(lat, lon) {
-  var statusEl = document.getElementById('sunTzStatus');
-  statusEl.textContent = 'Looking up timezone for this location…';
   fetch('https://timeapi.io/api/TimeZone/coordinate?latitude=' + lat + '&longitude=' + lon)
     .then(function(r) { return r.json(); })
     .then(function(data) {
-      var offsetHours = data.standardUtcOffset.seconds / 3600;
-      document.getElementById('sunTz').value = offsetHours;
-      statusEl.textContent = 'Auto-detected: ' + data.timeZone + ' (UTC' + (offsetHours >= 0 ? '+' : '') + offsetHours + ', standard time) — edit manually if needed.';
+      document.getElementById('sunTz').value = data.standardUtcOffset.seconds / 3600;
+      sunTzName = TZ_ALIASES[data.timeZone] || data.timeZone;
       calcSun();
     })
-    .catch(function() {
-      statusEl.textContent = 'Could not auto-detect timezone (lookup unavailable) — enter the UTC offset manually.';
+    .catch(function(err) {
+      console.error('sun-calc: timezone lookup failed, using last known UTC offset', err);
+      sunTzName = null;
+      calcSun();
     });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  calcMeteorite();
-  update();
+var sunSectionInitialized = false;
+
+/* The sun angle section pulls in Leaflet, OSM tiles and a timezone lookup —
+   all real network weight. Fired by the <details> element's native "toggle"
+   event, this defers all of that until the section is actually opened, and
+   only ever runs it once. It also sidesteps the classic Leaflet gotcha where
+   a map created inside a hidden/zero-size container never draws tiles: by
+   the time this fires the section is open and has real dimensions. */
+function onSunSectionToggle(details) {
+  if (!details.open || sunSectionInitialized) return;
+  sunSectionInitialized = true;
 
   var dateText = document.getElementById('sunDateText');
   var today = new Date();
@@ -414,6 +552,11 @@ document.addEventListener('DOMContentLoaded', function() {
   initSunMap();
   calcSun();
   lookupTimezone(parseFloat(document.getElementById('sunLat').value), parseFloat(document.getElementById('sunLon').value));
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  calcMeteorite();
+  update();
 });
 </script>
 {% endraw %}
