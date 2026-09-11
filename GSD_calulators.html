@@ -1,6 +1,6 @@
 ---
 layout: default
-title: GSD Calculator
+title: Drone Survey Calculators
 ---
 
 <style>
@@ -87,6 +87,42 @@ title: GSD Calculator
 <div class="result" style="margin-top:0.75rem">
   Max flight speed: <b id="outMs">--</b> <span id="outKmh" style="font-size:0.9rem;opacity:0.7"></span>
 </div>
+
+<hr>
+
+<h2>Sun Angle Flying Window</h2>
+
+<p style="font-size:0.85rem; opacity:0.75; margin-top:-0.5rem;">
+  From a location and date, plus a minimum sun elevation angle, work out the local times between which the sun is high enough to fly, and the total flying time available that day.
+</p>
+
+<label>Latitude (decimal degrees, negative for South)
+  <input type="number" id="sunLat" min="-90" max="90" step="any" value="-25" oninput="calcSun()">
+</label>
+
+<label>Longitude (decimal degrees, negative for West)
+  <input type="number" id="sunLon" min="-180" max="180" step="any" value="135" oninput="calcSun()">
+</label>
+
+<label>Date
+  <input type="date" id="sunDate" oninput="calcSun()">
+</label>
+
+<label>UTC offset of local time (hours, e.g. AEST = 10, ACST = 9.5)
+  <input type="number" id="sunTz" min="-12" max="14" step="0.25" value="9.5" oninput="calcSun()">
+</label>
+
+<label>Minimum sun elevation angle to fly (degrees)
+  <input type="number" id="sunMinAngle" min="0" max="90" step="1" value="20" oninput="calcSun()">
+</label>
+
+<div class="result">
+  Flying window: <b id="sunWindow">--</b>
+  <div style="margin-top:0.4rem">Total flight time: <b id="sunTotal">--</b></div>
+  <div style="margin-top:0.4rem; font-size:0.85rem; opacity:0.7">Solar noon: <span id="sunNoon">--</span></div>
+</div>
+
+<div class="specs">Local times are standard local times (not adjusted for daylight saving) based on the UTC offset entered above. Calculation ignores terrain/horizon obstructions and atmospheric refraction.</div>
 
 </div>
 
@@ -175,9 +211,99 @@ function update() {
   }
 }
 
+function pad2(n) {
+  return (n < 10 ? '0' : '') + n;
+}
+
+function minutesToClock(mins) {
+  // wraps into 0-1440 range and returns {text, dayOffset} where dayOffset is -1/0/+1
+  var dayOffset = 0;
+  while (mins < 0)    { mins += 1440; dayOffset -= 1; }
+  while (mins >= 1440) { mins -= 1440; dayOffset += 1; }
+  var h = Math.floor(mins / 60);
+  var m = Math.round(mins % 60);
+  if (m === 60) { m = 0; h += 1; }
+  var text = pad2(h % 24) + ':' + pad2(m);
+  if (dayOffset === -1) text += ' (prev day)';
+  if (dayOffset === 1)  text += ' (next day)';
+  return text;
+}
+
+function calcSun() {
+  var lat     = parseFloat(document.getElementById('sunLat').value);
+  var lon     = parseFloat(document.getElementById('sunLon').value);
+  var tz      = parseFloat(document.getElementById('sunTz').value);
+  var minAng  = parseFloat(document.getElementById('sunMinAngle').value);
+  var dateVal = document.getElementById('sunDate').value;
+
+  var windowEl = document.getElementById('sunWindow');
+  var totalEl  = document.getElementById('sunTotal');
+  var noonEl   = document.getElementById('sunNoon');
+
+  if (isNaN(lat) || isNaN(lon) || isNaN(tz) || isNaN(minAng) || !dateVal) {
+    windowEl.textContent = '--';
+    totalEl.textContent  = '--';
+    noonEl.textContent   = '--';
+    return;
+  }
+
+  var parts = dateVal.split('-');
+  var y = parseInt(parts[0], 10), mo = parseInt(parts[1], 10), d = parseInt(parts[2], 10);
+  var jan1 = Date.UTC(y, 0, 1);
+  var thisDay = Date.UTC(y, mo - 1, d);
+  var dayOfYear = Math.round((thisDay - jan1) / 86400000) + 1;
+
+  var gamma = (2 * Math.PI / 365) * (dayOfYear - 1);
+
+  var eqtime = 229.18 * (0.000075 + 0.001868 * Math.cos(gamma) - 0.032077 * Math.sin(gamma)
+             - 0.014615 * Math.cos(2 * gamma) - 0.040849 * Math.sin(2 * gamma));
+
+  var decl = 0.006918 - 0.399912 * Math.cos(gamma) + 0.070257 * Math.sin(gamma)
+           - 0.006758 * Math.cos(2 * gamma) + 0.000907 * Math.sin(2 * gamma)
+           - 0.002697 * Math.cos(3 * gamma) + 0.00148 * Math.sin(3 * gamma);
+
+  var latRad = lat * Math.PI / 180;
+  var angRad = minAng * Math.PI / 180;
+
+  var solarNoonMin = 720 - eqtime - 4 * lon + 60 * tz;
+  noonEl.textContent = minutesToClock(solarNoonMin);
+
+  var cosH = (Math.sin(angRad) - Math.sin(latRad) * Math.sin(decl)) / (Math.cos(latRad) * Math.cos(decl));
+
+  if (cosH > 1) {
+    windowEl.textContent = 'sun never reaches this angle on this date';
+    totalEl.textContent  = '0h 00m';
+    return;
+  }
+  if (cosH < -1) {
+    windowEl.textContent = 'sun stays above this angle all day';
+    totalEl.textContent  = '24h 00m';
+    return;
+  }
+
+  var H = Math.acos(cosH) * 180 / Math.PI; // hour angle, degrees
+  var halfDayMin = 4 * H;
+
+  var startMin = solarNoonMin - halfDayMin;
+  var endMin   = solarNoonMin + halfDayMin;
+
+  windowEl.textContent = minutesToClock(startMin) + ' to ' + minutesToClock(endMin);
+
+  var totalMin = 2 * halfDayMin;
+  var totH = Math.floor(totalMin / 60);
+  var totM = Math.round(totalMin % 60);
+  totalEl.textContent = totH + 'h ' + pad2(totM) + 'm';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
   calcMeteorite();
   update();
+  var dateInput = document.getElementById('sunDate');
+  if (!dateInput.value) {
+    var today = new Date();
+    dateInput.value = today.getFullYear() + '-' + pad2(today.getMonth() + 1) + '-' + pad2(today.getDate());
+  }
+  calcSun();
 });
 </script>
 {% endraw %}
