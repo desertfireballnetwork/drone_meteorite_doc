@@ -23,12 +23,16 @@ title: Webapp user roles
 ## Core Member
 **Can see:**
  - Requires explicit permission to access particular surveys (from a super admin).
+ - The list of people who have access to the survey, and their contact details (email).
+ - Survey statistics: stats on user actions, candidates map, survey timeline map.
+ - The data upload key.
 
 **Can do:**
  - Everything a collaborator can do.
  - Community manage a survey: allow collaborators to access the survey.
  - See and share the link for public members to do stage 1.
- - Get/Set survey parameters: set lat/long for home point location, change the survey description, enable/disable Stage 1.5, set the orthomosaic Mapbox tileset ID, see the data upload key.
+ - Get/Set survey parameters: set lat/long for home point location, change the survey description, enable/disable Stage 1.5, set the orthomosaic Mapbox tileset ID.
+ - Download survey metadata tables (images, inference, elimination).
 
 
 ## Super admin
