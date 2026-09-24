@@ -49,7 +49,7 @@ If using a different type of drone, get in touch early so we can do some tests a
 
 When the data is processed, the oldest images are somewhat prioritised. Hence for the higher priority/probability areas to be processed and seen first, they should be surveyed first.
 
-The simplest way to achieve this is to use Google Earth to cut the search area polygon into 5-20 smaller polygons, depending on the size of the survey:
+The simplest way to achieve this is to use Google Earth to break the search area into rectangular areas each about one day's worth of drone flying.
 
 *   Import the kmz/kml fall line bounds that are output by the darkflight calculations
 *   Adjust the transparency to ~30-40 percent and change the colour (pick your favourite), this will allow you to keep the background visible so you know if you planned flights cover the entire fall zone

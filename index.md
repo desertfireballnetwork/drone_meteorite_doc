@@ -10,8 +10,8 @@ _________________
 
 ## Helping with meteorite candidates review?
 
- - <i class="fa-solid fa-desktop"></i> [Stage 1 meteorite review](stage1_help.html)
- - <i class="fa-solid fa-desktop"></i> [Stage 2 meteorite review](stage2_help.html)
+ - <i class="fa-solid fa-table-cells"></i> [Stage 1/1.5 meteorite review](stage1_help.html)
+ - <i class="fa-solid fa-magnifying-glass-plus"></i> [Stage 2 meteorite review](stage2_help.html)
  - <i class="fa-solid fa-person-walking"></i> [Stage 4 meteorite review](stage4_help.html)
 
 ## Conducting the drone survey?

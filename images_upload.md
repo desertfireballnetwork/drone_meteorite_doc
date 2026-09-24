@@ -3,7 +3,7 @@ title: Images Upload
 ---
 # {{ page.title }}
 
-Use our standalone software package [github.com/desertfireballnetwork/aerial-images-upload-gui](https://github.com/desertfireballnetwork/aerial-images-upload-gui).
+Use our standalone software package [github.com/desertfireballnetwork/aerial-images-upload-gui](https://github.com/desertfireballnetwork/aerial-images-upload-gui/releases).
 
 Sorry, we have not written user documentation for this, got distracted with a pretty fireball.
 
