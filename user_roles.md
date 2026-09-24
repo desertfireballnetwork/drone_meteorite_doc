@@ -14,7 +14,9 @@ title: Webapp user roles
 
 ## Collaborator
 **Can see:**
- - Requires explicit permissions to access a survey (from the core member in charge of the survey)
+ - Requires explicit permissions to access a survey (from a core member in charge of the survey)
+ - Survey outline map.
+ - Overall progress stats on the elimination tasks.
 
 **Can do:**
  - Stages 1, (1.5), 2, 4 candidate review.
