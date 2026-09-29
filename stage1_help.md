@@ -29,6 +29,14 @@ That's what the `Back` button is for.
 Note: you can only go back to the previous panel, not the ones before that.
 
 
+### Tests
+Ramdomly, the app will throw meteorite candidates that are used for training the algorithm.
+
+These are designed to keep users engaged and give early warning of [vigilance decrement](https://en.wikipedia.org/wiki/Vigilance_(psychology)).
+
+If you miss a test, a warning message will apear when you hit save, prompting you to slow down or take a break.
+
+
 ## What is a promising meteorite candidate in stage 1?
 
 
@@ -44,3 +52,13 @@ To get an idea of what candidates that should not be dismissed look like, figure
 - TOP ROW: Real meteorites we used to train the ML model
 - MIDDLE: DFN09 Kybo-Lintos
 - BOTTOM: False positives we had to verify in person (the middle being the least convincing)
+
+
+## What the hell is Stage 1.5??
+
+Stage 1.5 is an additional reviewing step.
+
+Sometimes a lot of unconvincing candidates are presented in stage 1,
+and users naturally click yes on some of the slightly less unconvincing ones.
+The next stage of review (2) being a lot slower (one image at the image),
+we can activate stage 1.5 for the survey, candidates that make it through stage 1 are sent to stage 1.5 for a second look before they are sent to stage 2.
