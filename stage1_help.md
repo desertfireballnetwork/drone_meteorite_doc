@@ -60,7 +60,7 @@ If you miss a test, a warning message will apear when you hit save, prompting yo
 
 Collaborators and higher level users can see a tiny <i class="fa-solid fa-magnifying-glass-plus"></i> button in the top right corner of the images.
 
-This function should not be be used too often, otherwise it will be your workflow quite slow.
+This function should not be be used too often, otherwise it will make your workflow quite slow.
 But if you see a candidate that is exceptionally exciting, this button lets you go straight to stage 2 for this candidate.
 
 Note that if the button does nothing, it means the image was a test.
@@ -73,5 +73,5 @@ Stage 1.5 is an additional reviewing step.
 Sometimes a lot of unconvincing candidates are presented in stage 1,
 and users naturally click yes on some of the slightly less unconvincing ones.
 The next stage of review (2) being significantly slower (one image at the image),
-we can activate stage 1.5 for the survey, candidates that make it through stage 1 are sent to stage 1.5 for a second look before they are sent to stage 2.
+we can activate stage 1.5 for the survey, candidates that make it through stage 1 are sent to stage 1.5 for a second look before they are sent to [stage 2](stage2_help.html).
 
