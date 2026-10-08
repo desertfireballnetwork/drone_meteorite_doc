@@ -571,6 +571,13 @@ function onSunSectionToggle(details) {
 document.addEventListener('DOMContentLoaded', function() {
   calcMeteorite();
   update();
+  /* Links like GSD_calulators.html#calc3 should land on that section opened,
+     not collapsed. Opening it fires the native "toggle" event as usual. */
+  var target = location.hash && document.getElementById(location.hash.slice(1));
+  if (target && target.tagName === 'DETAILS') {
+    target.open = true;
+    target.scrollIntoView();
+  }
 });
 </script>
 {% endraw %}

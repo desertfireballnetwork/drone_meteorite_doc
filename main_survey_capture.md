@@ -16,11 +16,11 @@ _Read this if using a drone other than M300 + Zenmuse P1 & 50mm lens._
 ### Pictures quality
 
 *   Image format: JPEG.
-*   **Ground Sample Distance** (GSD) should be so the smallest meteorite expected appears >15 pixels across. See the [ground sampling distance caluclators](GSD_calulators.html). Example: if the smallest expected meteorite in the area is 50g, assuming a typical meteorite density, we need 2 mm/pixel GSD.
+*   **Ground Sample Distance** (GSD) should be so the smallest meteorite expected appears >15 pixels across. See the [Meteorite Mass to Required GSD calculator](GSD_calulators.html#calc1). Example: if the smallest expected meteorite in the area is 50g, assuming a typical meteorite density, we need 2 mm/pixel GSD.
 *   Focus: images should be in focus at all points in the image (even in corners) at the flight altitude.
-*   Motion blur. Maximum flight survey speed shgould be determined so that motion blur does not exceed 1 pixel during one exposure. Note: motion blur may not be visible in the images, so this really needs to be calculated, using the same [calculator](GSD_calulators.html) as for GSD. Example: shutter speed 1/2000 s, 1 pixel max blur, 2 mm/pixel GSD -> v = 2mm / (1/2000)s = 4 m/s.
+*   Motion blur. Maximum flight survey speed shgould be determined so that motion blur does not exceed 1 pixel during one exposure. Note: motion blur may not be visible in the images, so this really needs to be calculated, using the [GSD to Flight Height and Max Speed calculator](GSD_calulators.html#calc2). Example: shutter speed 1/2000 s, 1 pixel max blur, 2 mm/pixel GSD -> v = 2mm / (1/2000)s = 4 m/s.
 *   There technically does not need to be any overlap between the images. However, you need to figure out a safe overlap to make sure there are no gaps in the survey, considering no drone will fly a perfect survey, and variations on ground elevation can introduce gaps.
-*   If sunny: **Minimum sun elevation: TBD X degrees** (to avoid long shadows creating too many false positives.). Use [https://www.sunearthtools.com/dp/tools/pos\_sun.php](https://www.sunearthtools.com/dp/tools/pos_sun.php) to calculate survey start/end times for your location.
+*   If sunny: **Minimum sun elevation: TBD X degrees** (to avoid long shadows creating too many false positives.). Use the [Sun Angle Flying Window calculator](GSD_calulators.html#calc3) to calculate survey start/end times for your location.
 *   If overcast: shadows are not an issue, but picture quality may start to degrade due to not enough light (too high ISO). This is camera dependant.
 
 
@@ -30,7 +30,6 @@ Special attention should be given to make sure appropriate **metadata is tagged 
 
 *   Drone GPS coordinates, Drone speed, Drone and gimbal yaw/pitch/roll. These should all be present in the Exif of the survey images.
 *   Flying the survey drone with **Real-Time Kinematics** (either using your own RTK base station, or connecting to a nearby one online) is very desirable. It will record better metadata for georeferencing (altitude notably). And, depending on the configuration of your drone, it will help it fly at a constant altitude.
-*   Timezone set to UTC
 
 
 ### Drone/Camera compatibility with the webapp
@@ -89,14 +88,14 @@ The simplest way to achieve this is to use Google Earth to break the search area
 *   Go back to parent menu, and start from the top.
     - [ ] Select your camera 'Zenmuse P1' and your camera lens '50 mm'.
     - [ ] Smart Oblique 'OFF'.
-    - [ ] GSD should match the [calculator](GSD_calulators.html) when you are finished, but it should not be correct when it first appears
+    - [ ] GSD should match the [Meteorite Mass to Required GSD calculator](GSD_calulators.html#calc1) when you are finished, but it should not be correct when it first appears
     - [ ] Safe takeoff altituted should be 20 m, adjust if local terrain requires.
     - [ ] Terrain Follow 'OFF'.
     - [ ] Altitude Mode 'Relative to Takeoff Point'
-    - [ ] Flight Route Altitude should be between 20-30 m. Check [calculator](GSD_calulators.html).
+    - [ ] Flight Route Altitude should be between 20-30 m. Check the [GSD to Flight Height and Max Speed calculator](GSD_calulators.html#calc2).
     - [ ] Target Surface to Takeoff point should be 0 unless there are major elevation differences between your takeoff point and the survey area
     - [ ] Takeoff Speed '10 m/s'.
-    - [ ] Speed '4 m/s'. Check [calculator](GSD_calulators.html)
+    - [ ] Speed '4 m/s'. Check the [GSD to Flight Height and Max Speed calculator](GSD_calulators.html#calc2)
     - [ ] Course Angle: adjust to whatever makes sense for your polygon, typically cross the fall line.
     - [ ] Elevation optimization 'OFF'
     - [ ] Upon Completion 'Return to Home'

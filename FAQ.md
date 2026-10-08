@@ -22,11 +22,6 @@ While it still works, we do not recommand you do stages 1 & 2 on a phone.
 This is currently being implemented.
 
 
-### Stage 4 would be better on a standalone app.
-This is currently being implemented, it will be Android-only,
-and be able to do Stage 4 fully offline.
-
-
 ### In stage 4, why doesn't the webapp provide some route planning suggestion to optimally visit the candidates in the least amount of walking?
 [Humans are actually good at finding good solutions to the traveling salesman problem](https://link.springer.com/article/10.3758/BF03213088).
 
